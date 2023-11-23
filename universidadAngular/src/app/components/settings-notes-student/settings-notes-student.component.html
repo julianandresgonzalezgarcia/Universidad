@@ -1,0 +1,145 @@
+<div class="modal-settings-notes-student">
+
+    <div mat-dialog-title class="modal-SNS-title">
+
+        <div align="end" style="margin-bottom: -20px;">
+            <button (click)="ConprobacionEdicionNota()" mat-icon-button mat-dialog-close disableRipple>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <h1 style="margin-left: 10px;">Notas</h1>
+
+    </div>
+
+
+    <div mat-dialog-content class="modal-SNS-content">
+
+        <div class="modal-SNS-content-zone-table">
+            <table mat-table [dataSource]="notas"  style="width: 100%; text-align: center;">
+
+                <ng-container matColumnDef="Id_nota">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> ID nota </th>
+                    <td class="column_info" mat-cell *matCellDef="let element; let i = index"> 
+
+                        <div *ngIf="posicion != i">
+                            {{element.id_nota}} 
+                        </div>
+
+                        <div *ngIf="posicion == i && cargar_info_nota" style="padding-top: 18px;">
+                            <mat-form-field style="width: 80px;">
+                                <mat-label>ID nota</mat-label>
+                                <input [(ngModel)]="servicio.nota.id_nota" name="nota.id_nota" matInput disabled>
+                            </mat-form-field>
+                        </div>
+
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Asignatura">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> Asignatura </th>
+                    <td class="column_info" mat-cell *matCellDef="let element; let i = index"> 
+
+                        <div *ngIf="posicion != i">
+                            {{element.asignatura.nombre}} <b>({{element.asignatura.ciclo.carrera.nombre}})</b>
+                        </div>
+
+                        <div *ngIf="posicion == i && cargar_info_nota" style="padding-top: 6px;">
+
+                            <button (click)="PanelSeleccionAsignatura()" mat-stroked-button style="width: 90%;">
+                                {{servicio.nota.asignatura.nombre}} <b>({{servicio.nota.asignatura.ciclo.carrera.nombre}})</b>
+                            </button>
+
+                        </div>
+                    
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Alumno">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> Alumno </th>
+                    <td class="column_info" mat-cell *matCellDef="let element; let i = index">
+
+                        <div *ngIf="posicion != i">
+                            {{element.alumno.nombre}} {{element.alumno.apellido}} 
+                        </div>
+
+                        <div *ngIf="posicion == i && cargar_info_nota" style="padding-top: 6px;">
+
+                            <div>
+                                <button (click)="PanelSeleccionAlumno()" mat-stroked-button style="width: 90%;" [ngStyle]="{'background-color': servicio.nota.alumno.id_alumno == null? 'rgb(230, 230, 230)' : 'transparent'}">
+                                    <div *ngIf="servicio.nota.alumno.id_alumno != null">{{servicio.nota.alumno.nombre}} {{servicio.nota.alumno.apellido}}</div>
+                                    <div *ngIf="servicio.nota.alumno.id_alumno == null">...</div>
+                                </button>                                
+                            </div>
+
+                        </div>
+                    
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Fecha">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> Fecha </th>
+                    <td class="column_info" mat-cell *matCellDef="let element;let i = index"> 
+
+                        {{element.fecha}}                             
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Nota">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> Nota </th>
+                    <td class="column_info" mat-cell *matCellDef="let element; let i = index"> 
+                     
+                        <div *ngIf="posicion != i">
+                            <b>{{element.nota}}</b>
+                        </div>
+
+                        <div *ngIf="posicion == i && cargar_info_nota" style="padding-top: 18px;">
+                            <mat-form-field style="width: 100px;">
+
+                                <mat-label>Nota</mat-label>
+                                <b><input [formControl]="fromNota" [(ngModel)]="servicio.nota.nota" name="nota.nota" matInput style="text-align: center;" type="number" min="0" max="5" step="0.1" autocomplete="off"></b>
+                                <mat-error *ngIf="fromNota.invalid">Nota invalida</mat-error>
+
+                            </mat-form-field>                               
+                        </div>
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Acciones">
+                    <th class="column_title" mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td class="column_info" mat-cell *matCellDef="let element;let i = index">
+
+                        <div *ngIf="posicion != i">
+                            <button (click)="EditarNota(i, element)" mat-raised-button style="background-color: rgb(50, 50, 50); color: white;">
+                                Editar
+                            </button>
+                        </div>
+
+                        <div *ngIf="posicion == i && cargar_info_nota">
+                            <button (click)="ActualizarNota(servicio.nota.id_nota, servicio.nota)" mat-icon-button>
+                                <mat-icon>update</mat-icon>
+                            </button>
+
+                            <button (click)="BorrarNota(servicio.nota.id_nota)" mat-icon-button>
+                                <mat-icon>delete</mat-icon>
+                            </button>   
+                        </div>
+
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>               
+                   
+            </table>     
+        
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,36 @@
+<div class="list-selection-panel">
+
+  <div mat-dialog-title class="LSP-title">
+
+      <div align="end" style="margin-bottom: -24px;">
+          <button mat-icon-button mat-dialog-close cdkFocusInitial>
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+      <h1 style="padding: 10px;">Seleccione un estudiante</h1>
+
+  </div>
+
+
+
+  <div mat-dialog-content class="LSP-content">
+
+      <mat-selection-list #shoes [multiple]="false" style="padding: 0%;">
+
+          <mat-divider></mat-divider> 
+
+          <mat-list-option *ngFor="let alumno of alumnos; let i = index" mat-dialog-close (click)="SeleccionAlumno(alumno)" style="height: 120px; text-align: center;" [ngStyle]="{'background-color': alumno.id_alumno == servicio.nota.alumno.id_alumno? 'rgb(230, 230, 230)' : 'transparent'}">
+
+              <p style="font-size: 20px;"><b>	&#9658; Estudiante:</b> {{alumno.nombre}} {{alumno.apellido}} <b>Id: {{alumno.id_alumno}}</b></p>
+              <br>
+              <p><b>Carrera:</b> {{alumno.carrera.nombre}} &rarr; <b>Facultad:</b> {{alumno.carrera.facultad.nombre}}</p> 
+              <mat-divider></mat-divider>  
+
+          </mat-list-option>
+
+        </mat-selection-list>
+        
+  </div>
+
+</div>

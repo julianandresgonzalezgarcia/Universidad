@@ -1,0 +1,109 @@
+.card-student{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    width: 430px;
+    height: 170px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.card-student1{
+    background-color: rgb(21, 57, 88);
+    color: white;
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#screen{
+    display: flex;
+}
+
+.left{
+    text-align: center;
+    width: 50%;
+    height: 100%;
+}
+
+.right{
+    width: 50%;
+    height: 100%;
+}
+
+.button-action-student{
+    width: 168px; 
+    /*background-color: rgb(255, 255, 255);*/
+    height: 100px;
+    margin: 5px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    /*
+    border-end-end-radius: 50px;
+    border-end-start-radius: 50px;
+    */
+}
+
+.button-filter{
+    height: 51px; 
+    border-top-right-radius: 20px; 
+    border-end-end-radius: 20px; 
+    border-top-left-radius: 0px;
+    border-end-start-radius: 0px;
+    border-right: 1.5px solid rgb(215, 215, 215);
+    border-top: 1.5px solid rgb(215, 215, 215);
+    border-bottom: 1.5px solid rgb(215, 215, 215);
+}
+  
+.left2{
+    width: 80%;
+    height: 100%;
+}
+
+.right2{
+    width: 30%;
+    height: 100%;
+}
+
+.button-student{
+    color: white;
+    background-color: rgb(21, 57, 88);
+    width: 150px;
+    border-radius: 20px;
+    margin-top: 14px;
+}
+
+.content-student-data{
+    width: 100%; 
+    height: 515px; 
+    overflow: auto;
+}
+
+.content-student-data::-webkit-scrollbar{
+    width: 15.5px;
+}
+  
+.content-student-data::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+}
+  
+.content-student-data::-webkit-scrollbar-thumb{
+    border: 5px solid rgb(245, 245, 245);
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}
+
+.card-student-data{
+    border-radius: 20px; 
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid rgb(21, 57, 88);
+}
+
+.button-student-data{  
+    background-color: rgb(21, 57, 88); 
+    color: white;
+    transform: scale(0.8); 
+    border-radius: 20px;
+}

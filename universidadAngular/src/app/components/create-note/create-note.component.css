@@ -1,0 +1,95 @@
+.modal-create-note{
+    margin: -24px;
+    width: 990px;
+    background-color: rgb(50, 50, 50);
+    border: 2px solid rgb(50, 50, 50);
+}
+
+#screen{
+    display: flex;
+}
+
+.title{
+    text-align: center; 
+    padding: 5px; 
+    background-color: rgb(21, 57, 88); 
+    color: white; 
+    border-bottom: 2px solid rgb(50, 50, 50);
+}
+
+.left {
+    width: 330px;
+    height: 400px;
+    background-color: rgb(240, 240, 240);  
+    border-right: 1px solid rgb(50, 50, 50);
+}
+
+.center{
+    width: 330px; 
+    height: 400px;  
+    border-right: 1px solid rgb(50, 50, 50); 
+    background-color: rgb(245, 245, 245);
+}
+
+.center::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.center::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.center::-webkit-scrollbar-thumb {
+    border: 5px solid rgb(245, 245, 245);
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}
+
+.modal-create-note-selection-list{
+    height: 85%; 
+    overflow: auto;
+}
+
+.modal-create-note-selection-list::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.modal-create-note-selection-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.modal-create-note-selection-list::-webkit-scrollbar-thumb {
+    border: 5px solid rgb(240, 240, 240);
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}
+
+.right{
+    width: 330px; 
+    height: 400px; 
+    background-color: white; 
+    text-align: center;   
+}
+
+.right-table{
+    margin-left: 10px; 
+    margin-top: 10px; 
+    width: 97%; 
+    height: 250px; 
+    text-align: center; 
+    overflow: scroll;
+}
+
+.right-table::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.right-table::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.right-table::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}

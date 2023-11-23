@@ -1,0 +1,104 @@
+<div class="modal-create-cycle">
+
+  <div mat-dialog-title class="MCC-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Crear Ciclo</h1>    
+  </div>
+
+  <form>
+
+    <div mat-dialog-content class="MCC-content">
+
+      <div class="MCC-content-zone">
+
+        <div class="MCC-content-zone-left">
+
+          <mat-selection-list [multiple]="false" style="padding: 0%;">
+            
+            <mat-list-option *ngFor="let carrera of carreras" [value]="carrera" (click)="ListarCiclosPorSeleccionCarrera(carrera.id_carrera); ciclo.carrera = carrera" style="height: 80px;">
+              
+              <p><u><b>{{carrera.nombre}}</b></u></p> 
+              <p>&#9658; {{carrera.duracion}} semenstres</p>
+              <p>&#9658; {{carrera.facultad.nombre}}</p>
+
+              <mat-divider></mat-divider>
+
+            </mat-list-option>
+
+          </mat-selection-list> 
+
+        </div>
+
+
+
+        <div class="MCC-content-zone-right">
+
+          <div style="text-align: center; margin-top: 2px;">
+
+            <mat-form-field appearance="outline" style="width: 90%;">
+              <mat-label>Nonbre</mat-label>
+              <input [formControl]="formNombre" [(ngModel)]="ciclo.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+              <mat-error *ngIf="formNombre.hasError('required')">Digite el nombre</mat-error>
+            </mat-form-field>     
+
+          </div>
+
+
+          <div class="MCC-content-zone-right-cycle-content">
+
+            <mat-divider></mat-divider>
+
+            <mat-accordion>
+
+              <mat-expansion-panel *ngFor="let ciclo of ciclos" (click)="ListarAsignaturasPorSeleccionCiclo(ciclo.id_ciclo)" style="border-radius: 0px;">
+                
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    &#9658; {{ciclo.nombre}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                
+                <mat-divider></mat-divider>
+        
+                <table style="width: 100%;">
+        
+                  <tr>
+                    <th>Asignatura</th>
+                    <th>Creditos</th>
+                  </tr>
+        
+                  <tr *ngFor="let asignatura of asignaturas">
+                    <td>&#9658; {{asignatura.nombre}}</td>
+                    <td>{{asignatura.creditos}}</td>
+                  </tr>
+        
+                </table> 
+        
+              </mat-expansion-panel>
+
+            </mat-accordion>  
+
+          </div>      
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div mat-dialog-actions align="end" class="MCC-actions">
+      
+      <button (click)="GuardarCiclo(ciclo)" mat-button class="MCC-actions-button">
+        Crear
+      </button>      
+
+    </div>
+
+  </form>
+</div>

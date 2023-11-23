@@ -1,0 +1,110 @@
+<body class="login">
+
+  <div *ngIf="!correcto">
+    <app-login></app-login>
+  </div>
+
+  <div *ngIf="correcto">
+
+    <div>
+
+      <mat-drawer-container class="drawer">
+          <mat-drawer class="sidenav" mode="side" opened>
+
+            <div style="margin-top: 14px;">
+                <img src="../../../assets/LogoBlanco.png" width="45">
+            </div>
+
+            <div style="margin-top: 30px;">
+              <button (click)="PaginaInicio();" mat-icon-button matTooltip="Pagina principal" [matTooltipPosition]="'right'" class="button-sidenav">
+                <mat-icon>home</mat-icon>
+              </button>
+            </div>
+
+            <div>
+              <button (click)="PaginaStudents()" mat-icon-button matTooltip="Estudiantes" [matTooltipPosition]="'right'" class="button-sidenav">
+                <mat-icon>supervised_user_circle</mat-icon>
+              </button>
+            </div>
+
+            <div>
+              <button (click)="PaginaSubjects()" mat-icon-button matTooltip="Asignaturas" [matTooltipPosition]="'right'" class="button-sidenav">
+                <mat-icon>book</mat-icon>
+              </button>
+            </div>
+
+            <div>
+              <button (click)="PaginaNotes()" mat-icon-button matTooltip="Notas" [matTooltipPosition]="'right'" class="button-sidenav">
+                <mat-icon>list_alt</mat-icon>
+              </button>
+            </div>
+
+            <div style="margin-top: 240px;">
+              <button (click)="CerrarSesion()"  mat-icon-button matTooltip="Salir" [matTooltipPosition]="'right'" class="button-sidenav" style="transform: scale(-1)">
+                <mat-icon>exit_to_app</mat-icon>
+              </button>
+            </div>
+
+          </mat-drawer>
+
+        
+        <mat-drawer-content style="background-color: rgb(21, 57, 88);">
+          <mat-card class="card-home">
+            <mat-card-content>
+              <mat-toolbar class="toolbar">
+                  
+                <h1 style="font-size: 25px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>&bull; {{servicio.posicion}}</b></h1>
+                
+                <span class="menu-spacer"></span>
+                <button mat-icon-button style="margin-right: 15px;">
+                  <mat-icon>search</mat-icon>
+                </button>
+                <button mat-icon-button style="margin-right: 15px;">
+                  <mat-icon>notifications</mat-icon>
+                </button>
+                <button *ngIf="carga" mat-icon-button [matMenuTriggerFor]="menu" [style.background-image]="'url(&quot;'+ usuario.avatar.avatar_ruta +'&quot;)'" class="button-user">
+                  <!-- 
+                    [style.background-image]="'url(&quot;'+ icon +'&quot;)'"
+                    <img src="../assets/estudiante (2).png" width="40">       
+                   -->   
+                </button>
+
+                <mat-menu #menu="matMenu">
+
+                  <button (click)="UserData()" mat-menu-item>
+                    <mat-icon>settings</mat-icon>
+                    <span>Configuracion</span>
+                  </button>
+
+                  <button (click)="CerrarSesion()" mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Cerrar sesion</span>
+                  </button>
+
+                </mat-menu>              
+              </mat-toolbar>  
+
+              <router-outlet></router-outlet>
+
+            </mat-card-content>
+          </mat-card>       
+
+          
+        </mat-drawer-content>
+
+          <!--  
+          <div class="sidenav-content">
+
+
+              
+          </div>
+        -->
+        
+      </mat-drawer-container>
+
+    </div>
+
+  </div>
+
+</body>
+

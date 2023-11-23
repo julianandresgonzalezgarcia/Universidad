@@ -1,0 +1,161 @@
+<div class="modal-create-subject">
+
+  <form>
+
+    <div mat-dialog-title class="MCS-title-content">
+
+      <div align="end" style="margin-bottom: -30px;">
+        <button (click)="ConfirmarRecargaPagina()" mat-icon-button mat-dialog-close disableRipple cdkFocusInitial>
+            <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Crear Asignatura</h1>
+
+    </div>
+
+
+    <div mat-dialog-content class="MCS-content">
+      
+      <div style="display: flex;">
+
+          <div style="width: 40%;">
+    
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input [formControl]="formControlSubject[0]" [(ngModel)]="asignatura.nombre" name="nombre" matInput placeholder="Asignatura" autocomplete="off">
+              <mat-error *ngIf="formControlSubject[0].hasError('required')">Digite una asignatura</mat-error>
+            </mat-form-field>
+
+            <div class="MCS-content-credits">
+
+              <h3 style="margin-bottom: -10px;">Creditos: <b>{{asignatura.creditos}}</b></h3>
+
+              <mat-slider [formControl]="formControlSubject[1]" 
+              color="primary"
+              [min]="1" 
+              [max]="5" 
+              [step]="1"
+              style="width: 90%;" 
+              [(ngModel)]="asignatura.creditos" name="creditos">
+
+                <input matSliderThumb>
+              </mat-slider>  
+
+            </div>
+
+            <mat-form-field appearance="outline" style="margin-top: 12px;">
+              <mat-label>Facultad</mat-label>
+              <mat-select [formControl]="formControlSubject[2]">
+                <mat-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad); ListarUsuariosPorfacultad(facultad.id_facultad)">
+                  {{facultad.nombre}}
+                </mat-option>
+              </mat-select>
+
+              <mat-error *ngIf="formControlSubject[2].hasError('required')">Seleccione una facultad</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Carrera</mat-label>
+              <mat-select [formControl]="formControlSubject[3]" [(ngModel)]="seleccion_carrera">
+                <mat-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera)">
+                  {{carrera.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formControlSubject[2].hasError('required')">Seleccione una facultad</mat-error>
+              <mat-error *ngIf="formControlSubject[2].valid && formControlSubject[3].hasError('required')">Seleccione una carrera</mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div style="width: 40%;">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Ciclo</mat-label>
+              <mat-select [formControl]="formControlSubject[4]" [(ngModel)]="asignatura.ciclo" name="ciclo">
+                <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo" (click)="SeleccionCiclo(ciclo.id_ciclo)">
+                  {{ciclo.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formControlSubject[2].hasError('required')">Seleccione una facultad</mat-error>
+              <mat-error *ngIf="formControlSubject[2].valid && formControlSubject[3].hasError('required')">Seleccione una carrera</mat-error>
+              <mat-error *ngIf="formControlSubject[2].valid && formControlSubject[3].valid && formControlSubject[4].hasError('required')">Seleccione un ciclo</mat-error>
+            </mat-form-field>
+
+            <div class="MCS-content-subject-list">
+              
+              <div *ngFor="let asignatura of asignaturas">
+
+                <div style="margin: 14.05px;">
+                  <p style="margin: 0%;">&#9658; {{asignatura.nombre}}</p> 
+                  <p style="margin: 0%;">Creditos: {{asignatura.creditos}}</p>                
+                </div>
+
+                <mat-divider></mat-divider>
+
+              </div>
+  
+            </div>
+
+          </div>
+
+          <div style="width: 40%;">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Docente</mat-label>
+              <mat-select [formControl]="formControlSubject[5]" [(ngModel)]="asignatura.usuario" name="usuario">
+                <mat-option *ngFor="let docente of docentes" [value]="docente" (click)="SeleccionUsuario(docente.id_usuario)">
+                  {{docente.nombre}} {{docente.apellido}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formControlSubject[2].hasError('required')">Seleccione una facultad</mat-error>
+              <mat-error *ngIf="formControlSubject[2].valid && formControlSubject[5].hasError('required')">Seleccione un docente</mat-error>
+            </mat-form-field>
+
+            <div class="MCS-content-user-data">
+              
+              <div *ngIf="carga_docente" style="margin-top: 10px;">
+
+                <img src= {{docente.avatar.avatar_ruta}} height="60">
+
+                <p style="margin-top: 5px;">
+                  <b>Nombre:</b> {{docente.nombre}} {{docente.apellido}}
+                </p>
+
+                <p>
+                  <b>Correo:</b> {{docente.correo}}
+                </p>   
+                
+                <p>
+                  <b>Facultad:</b> {{docente.facultad.nombre}}
+                </p> 
+
+                <p>
+                  <b>Ubicacion Facu:</b> {{docente.facultad.ubicacion}}
+                </p> 
+
+              </div>
+
+            </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+    <div class="MCS-actions" mat-dialog-actions align="end">
+      
+      <div style="margin-right: 35px; margin-top: -12px;">
+        <button (click)="GuardarAsignatura(asignatura)" class="MCS-actions-button-create-subject" mat-flat-button>
+          Crear
+        </button>      
+      </div>
+
+
+    </div>  
+    
+  </form>
+
+</div>
+

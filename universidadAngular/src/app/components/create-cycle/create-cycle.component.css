@@ -1,0 +1,88 @@
+.modal-create-cycle{
+    width: 700px;
+}
+
+.MCC-title{
+    margin-top: -24px; 
+    margin-left: -24px; 
+    margin-right: -24px; 
+    margin-bottom: -15px; 
+    background-color: rgb(50, 50, 50); 
+    color: white;
+}
+
+.MCC-content{
+    padding: 0%; 
+    height: 320px;
+}
+
+.MCC-content-zone{
+    display: flex; 
+    padding: 0%;
+    width: 100%; 
+    height: 100%;
+}
+
+.MCC-content-zone-left{
+    width: 50%; 
+    overflow-y: auto;
+    border-right: 2px solid rgb(224, 224, 224);
+}
+
+.MCC-content-zone-left::-webkit-scrollbar{
+    width: 15.5px;
+}
+
+.MCC-content-zone-left::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.MCC-content-zone-left::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}
+
+.MCC-content-zone-right{
+    width: 50%; 
+    height: 100%;
+}
+
+.MCC-content-zone-right-cycle-content{
+    height: 241px; 
+    overflow-y: auto;
+}
+
+.MCC-content-zone-right-cycle-content::-webkit-scrollbar{
+    width: 15.5px;
+}
+
+.MCC-content-zone-right-cycle-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.MCC-content-zone-right-cycle-content::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}
+
+.MCC-actions{
+    padding: 0%; 
+    margin-left: -24px; 
+    margin-right: -24px; 
+    margin-bottom: -24px; 
+    background-color: rgb(50, 50, 50); 
+    color: white;
+}
+
+.MCC-actions-button{
+    background-color: white; 
+    color: rgb(50, 50, 50); 
+    height: 50px; 
+    margin-right: 20px; 
+    margin-bottom: 24px; 
+    border-radius: 0px; 
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px;
+}

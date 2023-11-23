@@ -1,0 +1,38 @@
+<div class="list-selection-panel">
+
+    <div mat-dialog-title class="LSP-title">
+
+        <div align="end" style="margin-bottom: -24px;">
+            <button mat-icon-button mat-dialog-close cdkFocusInitial>
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+
+        <h1 style="padding: 10px;">Seleccione una asignatura</h1>
+
+    </div>
+
+
+
+    <div mat-dialog-content class="LSP-content">
+
+        <mat-selection-list #shoes [multiple]="false" style="padding: 0%;">
+
+            <mat-divider></mat-divider> 
+
+            <mat-list-option *ngFor="let asignatura of asignaturas" mat-dialog-close (click)="SeleccionAsignatura(asignatura)" style="height: 120px; text-align: center;" [ngStyle]="{'background-color': asignatura.id_asignatura == servicio.nota.asignatura.id_asignatura? 'rgb(230, 230, 230)' : 'transparent'}">
+
+                <p style="font-size: 20px;"><b>	&#9658; Asignatura:</b> {{asignatura.nombre}}</p>
+                <br>
+                <p><b>Creditos:</b> {{asignatura.creditos}} &nbsp; <b>Ciclo:</b> {{asignatura.ciclo.nombre}}</p> 
+                <p><b>Carrera:</b> {{asignatura.ciclo.carrera.nombre}} &rarr; <b>Facultad:</b> {{asignatura.ciclo.carrera.facultad.nombre}}</p> 
+                <p></p>
+                <mat-divider></mat-divider>  
+
+            </mat-list-option>
+
+          </mat-selection-list>
+          
+    </div>
+
+</div>

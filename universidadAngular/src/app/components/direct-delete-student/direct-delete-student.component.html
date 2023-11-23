@@ -1,0 +1,79 @@
+<div class="modal-direct-delete">
+
+    <div class="modal-direct-title">
+        <div align="end">
+            <button mat-icon-button mat-dialog-close disableRipple>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <h1 mat-dialog-title style="text-align: center; padding-bottom: 10px;">Borrar alumno</h1>
+    </div>
+
+    <div style="text-align: center;">
+
+        <div class="row">
+
+            <mat-form-field class="col-10" appearance="outline">
+                <mat-label>ID</mat-label>
+                <input [formControl]="fromDelete" [(ngModel)]="id" name="id" type="number" matInput (input)="AlumnoPorId(id)">
+                <mat-error *ngIf="fromDelete.hasError('required')">Digite el id del alumno</mat-error>
+            </mat-form-field>
+
+<!-- 
+
+            <div class="col-2" style="margin: 2px;">
+                <button (click)="AlumnoPorId(id)" mat-stroked-button style="height: 53px;">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+-->
+            
+            <div class="col-1" style="margin: 2px;">
+                <button (click)="PanelConfirmarBorrado(id)" mat-stroked-button cdkFocusInitial style="height: 53px;">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div mat-dialog-content>
+
+        <mat-card class="modal-card-selection">
+
+            <mat-card-content *ngIf="!carga" style="text-align: center;">
+                <mat-card-title style="margin-top: 20px;">Digite el id del alumno</mat-card-title>
+            </mat-card-content>
+
+            <mat-card-content *ngIf="carga">
+
+                <mat-card-title>
+                    {{alumno.nombre}} {{alumno.apellido}}
+
+                    <button mat-stroked-button disabled class="button-student-data" style="color: white;">
+                        {{alumno.carrera.nombre}}
+                    </button>
+
+                    <button mat-stroked-button disabled class="button-student-data" style="color: white;">
+                        {{alumno.carrera.facultad.nombre}}
+                    </button>
+
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                    <b>Facultad:</b> {{alumno.carrera.facultad.nombre}}
+                    &nbsp; > &nbsp;
+                    <b>Carrera:</b> {{alumno.carrera.nombre}}
+                    &nbsp; > &nbsp;
+                    <b>Ubicacion:</b> {{alumno.carrera.facultad.ubicacion}}
+                </mat-card-subtitle>  
+
+            </mat-card-content>
+            
+        </mat-card>
+
+    </div>
+
+</div>
+

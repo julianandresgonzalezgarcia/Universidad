@@ -1,0 +1,238 @@
+<div style="display: flex;">
+
+    <div class="notes-content-left">
+
+        <mat-card class="card-create-note">
+           
+            <mat-card-content>
+                <div class="row">
+
+                    <div class="col-6" style="margin: 20px;">
+                        <mat-card-title style="color: white;">Nueva nota</mat-card-title>
+                        <mat-card-subtitle style="color: white;">Digite los datos pertinentes para crear una nueva nota</mat-card-subtitle>
+                        <button (click)="panelCrearNota()" mat-stroked-button class="button-create-note">Crear</button>
+                    </div>
+
+                    <div class="col-4" style="display: flex;">
+                        <img src="../../../assets/Teacher-bro.png" width="310">
+                    </div>
+
+                </div> 
+            </mat-card-content>
+
+        </mat-card>
+
+        <div class="row">
+        
+            <mat-form-field class="col-2" appearance="outline">
+                <mat-label>ID</mat-label>
+                <input [(ngModel)]="filtro_id_alumno" type="number" matInput placeholder="ID" (input)="filtroAlumnoListarAlumnosPorMaestro(filtro_id_alumno)">
+            </mat-form-field>
+        
+            <mat-form-field class="col-4" appearance="outline">
+                <mat-label>Buscar</mat-label>
+                <input [(ngModel)]="filtro_texto" matInput placeholder="nombre/apellido/facultad/carrera/asignatura" (input)="filtroTextoListarAlumnosPorMaestro(filtro_texto)">
+            </mat-form-field>
+            
+            <mat-form-field class="col-3" appearance="outline">
+                <mat-label>Facultad</mat-label>
+                <mat-select [(ngModel)]="selecciones[0]">
+                    <mat-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad); filtroFacultadListarAlumnosPorMaestro(facultad.id_facultad)">
+                        {{facultad.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-3" appearance="outline">
+                <mat-label>Carrera</mat-label>
+                <mat-select [(ngModel)]="selecciones[1]">
+                    <mat-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera); filtroCarreraListarAlumnosPorMaestro(carrera.id_carrera)">
+                        {{carrera.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <mat-card class="card-students-user">
+
+            <mat-card-content>
+
+                <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+                    <div align="end" *ngIf="busqueda" style="margin-top: 5px; margin-bottom: 5px;">
+                        <button (click)="ListarAlumnosPorMaestro()" mat-stroked-button class="button-list-students">
+                            Listar <mat-icon>autorenew</mat-icon>
+                        </button>                        
+                    </div>
+
+
+                    <mat-list-option *ngFor="let alumno of notas" style="height: 100px;" (click)="NotasAlumno(alumno.alumno.id_alumno); AlumnoPorId(alumno.alumno.id_alumno)">
+
+                        <div class="row">
+
+                            <div class="col-1 student-id">
+                                ID: {{alumno.alumno.id_alumno}} 
+                            </div>
+            
+                            <div class="col-1">
+                                <img src="../../../assets/archivo-y-carpeta.png" width="60">
+                            </div>
+
+                            <div class="col">
+
+                                <div style="margin-top: 19px;">
+
+                                    <b>{{alumno.alumno.nombre}} {{alumno.alumno.apellido}}</b>
+
+                                    &nbsp; > &nbsp;
+                                    
+                                    <b>Facultad:</b> {{alumno.alumno.carrera.facultad.nombre}} 
+                                    &nbsp; &rarr; &nbsp;
+                                    <b>Carrera:</b> {{alumno.alumno.carrera.nombre}}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                    </mat-list-option>
+
+                </mat-selection-list>
+
+            </mat-card-content>
+        </mat-card>  
+
+    </div>
+
+    
+
+    
+    <div class="notes-content-right">
+
+        <mat-card class="card-list-subjects">
+            <mat-card-content>
+
+                <mat-selection-list [multiple]="false">
+
+                    <div style="background-color: rgb(50, 50, 50); color: white;" mat-subheader>Asignaturas</div>
+
+                    <mat-list-option *ngFor="let asignatura of asignaturas" (click)="filtroAsignaturaListarAlumnosPorMaestro(asignatura.id_asignatura)" class="list-option-action" style="height: 90px;">
+                        
+                        <p style="font-size: 20px;"><b>&#9658; {{asignatura.nombre}}</b></p>
+                        <p>{{asignatura.ciclo.nombre}}</p>
+
+                        <p style="color: rgb(128, 128, 128);">&bull; <u>{{asignatura.ciclo.carrera.nombre}}</u></p>
+                        <mat-divider></mat-divider>
+
+                    </mat-list-option>
+
+                  </mat-selection-list>
+
+
+            </mat-card-content>
+        </mat-card>
+
+        <div class="row" style="margin-left: 10px;">
+
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>ciclo</mat-label>
+                <mat-select [(ngModel)]="selecciones[2]">
+                    <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo.id_ciclo" (click)="SeleccionCiclo(ciclo.id_ciclo); filtroCicloListarAlumnosPorMaestro(ciclo.id_ciclo)">
+                        {{ciclo.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Asignatura</mat-label>
+                <mat-select [(ngModel)]="selecciones[3]">
+                    <mat-option *ngFor="let asignatura of asignaturasFiltro" [value]="asignatura.id_asignatura" (click)="filtroAsignaturaListarAlumnosPorMaestro(asignatura.id_asignatura)">
+                        {{asignatura.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <mat-card class="card-notes-student">
+            
+            <div class="card-notes-student-header">
+
+                <section style="display: flex;">
+
+                    <div style="width: 88%;">
+                        <mat-card-title style="margin-top: 5px; margin-left: 10px;">
+                            Notas: {{notasAlumno.length}}
+                        </mat-card-title>
+                    </div>
+
+                    <div style="width: 12%;">
+                        <button (click)="PanelConfiguracionNotas()" mat-icon-button style="margin-top: 3px;">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                    </div>
+
+                </section>
+
+            </div>
+
+            <mat-card-content class="card-notes-content">
+                <table style="width: 100%; text-align: center;">
+
+                    <tr>
+                      <th>Asignatura</th>
+                      <th>Creditos</th>
+                      <th>Fecha</th>
+                      <th>Nota</th>
+                    </tr>
+            
+                    <tr *ngFor="let nota of notasAlumno">
+                        <td>{{nota.asignatura.nombre}}</td>
+                        <td>{{nota.asignatura.creditos}}</td>
+                        <td>{{nota.fecha}}</td>
+                        <td><b>{{nota.nota}}</b></td>
+                    </tr>        
+
+                  </table>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card-info-student">
+            
+            <mat-card-header *ngIf="!carga_alumno">
+                
+                    <div mat-card-avatar class="card-info-student-avatar"></div>
+                    <mat-card-title>Seleccione un estudiante</mat-card-title>
+                    <mat-card-subtitle>adquirir su informacion</mat-card-subtitle>
+            
+            </mat-card-header>
+
+
+            <mat-card-header *ngIf="carga_alumno">
+
+                    <div mat-card-avatar class="card-info-student-avatar"></div>
+                    <mat-card-title> <b>ID:{{alumno.id_alumno}}</b> {{alumno.nombre}}</mat-card-title>
+                    <mat-card-subtitle>{{alumno.apellido}}</mat-card-subtitle>    
+            
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+            
+            <mat-card-content *ngIf="carga_alumno">
+
+                <h3 style="margin: 0%;"><b>ID Carrera: {{alumno.carrera.id_carrera}}</b></h3>
+                <b>Carrera:</b> {{alumno.carrera.nombre}} > &nbsp; <b>{{alumno.carrera.duracion}}</b> semestres
+
+                <h3 style="margin: 0%;"><b>ID Facultad: {{alumno.carrera.facultad.id_facultad}}</b></h3>
+                <b>Facultad:</b> {{alumno.carrera.facultad.nombre}} > &nbsp; <b>Ubicacion:</b> {{alumno.carrera.facultad.ubicacion}}
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+</div>

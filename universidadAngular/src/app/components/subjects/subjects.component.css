@@ -1,0 +1,45 @@
+.card-sección{
+    width: 300px; 
+    height: 421px; 
+    margin: 5px; 
+    padding: 0%; 
+    border: 2px solid rgb(21, 57, 88);
+}
+
+::ng-deep .mat-tab-label {
+    color:white;
+}
+
+::ng-deep .mat-tab-group {
+    background-color: rgb(50, 50, 50);
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px;
+    color:rgb(255, 255, 255);
+}
+
+.CS-header{
+    background-color: rgb(21, 57, 88); 
+    color: white; 
+    padding: 5px;
+}
+
+.CS-content{
+    height: 335px; 
+    overflow: auto;
+}
+
+.CS-content::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.CS-content::-webkit-scrollbar-track {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.CS-content::-webkit-scrollbar-thumb {
+    border: 5px solid rgb(245, 245, 245);
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}

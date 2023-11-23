@@ -1,0 +1,58 @@
+<div class="list-selection-panel">
+
+  <div mat-dialog-title class="LSP-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Seleccione un docente</h1>   
+
+  </div>
+
+  <div mat-dialog-content class="LSP-content">
+
+    <mat-accordion>
+
+      <mat-expansion-panel *ngFor="let usuario of usuarios" (click)="ListarAsignaturasPorUsuario(usuario.id_usuario)" class="LSP-content-expansion-panel" [ngStyle]="{'background-color': usuario.id_usuario == servicio.asignaturas_subject_component[servicio.indice_lista].usuario.id_usuario ? 'rgb(230, 230, 230)' : 'transparent'}">
+        
+        <mat-expansion-panel-header>
+
+            <img src={{usuario.avatar.avatar_ruta}} width="40" height="40">
+
+            <div style="padding: 10px;">
+              {{usuario.nombre}} {{usuario.apellido}} &#9658; {{usuario.correo}} &#9658; {{usuario.facultad.nombre}}            
+            </div>            
+
+        </mat-expansion-panel-header>
+        
+        <mat-divider></mat-divider>
+
+        <table style="width: 100%;">
+
+          <tr>
+            <th>Asignaturas del docente</th>
+            <th>Creditos</th>
+          </tr>
+
+          <tr *ngFor="let asignatura of asignaturas">
+            <td>&#9658; {{asignatura.nombre}} <b>({{asignatura.ciclo.carrera.nombre}})</b></td>
+            <td>{{asignatura.creditos}}</td>
+          </tr>
+
+        </table>
+
+        <mat-action-row>
+          <button (click)="SeleccionUsuario(usuario)" mat-stroked-button mat-dialog-close> Seleccionar </button>
+        </mat-action-row>        
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </div>
+
+
+</div>

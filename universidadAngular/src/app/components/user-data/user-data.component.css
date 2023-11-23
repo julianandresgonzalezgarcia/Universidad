@@ -1,0 +1,77 @@
+.panel-user-data{
+    width: 500px;
+    height: auto;
+}
+
+.card-user-data{
+    padding: 0%;
+    width: 500px;
+    height: 300px;
+}
+
+.input-Usuario{
+    width: 200px;
+    margin: 5px;
+}
+
+
+.card-header{
+    /*transform: scale(1.2);
+    padding-top: 20px;*/
+    padding-left: 20px;
+    background-color: rgb(245, 245, 245); 
+}
+
+.example-header-image {
+    transform: scale(1.7);
+    margin-top: 18px;
+    /*
+    background-image: url('../../../assets/Avatars/Avatar (10).png');
+    */
+    background-size: cover;
+}
+
+.card-title{
+    transform: scale(1.2); 
+    margin-top: 15px;
+    margin-left: 22px;
+}
+
+.card-subtitle{
+    transform: scale(1.2); 
+    margin-left: 22px;
+}
+
+.dialog-actions1{
+    margin-left: 15px;
+    margin-top: 34px; 
+    margin-bottom: 10px;   
+}
+
+.dialog-actions2{
+    margin-left: 351px;
+    margin-top: 34px; 
+    margin-bottom: 10px;   
+}
+
+.button-dialog-actions{
+    background-color: rgb(21, 57, 88);
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+/*#screen{
+    display: flex;
+}
+
+.left{ 
+    width: 40%;
+    height: 300px;
+    background-color: rgb(21, 57, 88);
+}
+
+.right{
+    text-align: center;
+    width: 60%;
+    height: 300px;
+}*/

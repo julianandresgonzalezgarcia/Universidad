@@ -1,0 +1,723 @@
+<div>
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+
+        <mat-tab label="Asignatura">
+
+            <div style="display: flex; background-color: rgb(245, 245, 245);">
+
+                <mat-card style="height: 140px; width: 50%; padding: 0%; margin: 5px; border: 3px solid rgb(50, 50, 50);">
+                    <mat-card-content>
+
+                        <div style="display: flex;">
+
+                            <div style="background-color: rgb(50, 50, 50); height: 134px; width: 70%; color: white; border-end-end-radius: 100px; border-top-right-radius: 100px;">
+                                
+                                <div style="padding-top: 5px; padding-left: 15px;">
+
+                                    <h2 style="margin: 0%;"><b><u>Crear Asignatura</u></b></h2>  
+                                    
+                                    <p style="margin: 0%;">La nueva asignatura debe contener la siguiente informacion:</p>
+
+                                    <p style="margin: 0%;">&#9658; Nombre &#9658; Creditos &#9658; Ciclo &#9658; Docente</p>
+
+                                    <button (click)="PanelCrearAsignatura()" mat-raised-button style="width: 170px; margin-top: 9px; border-radius: 20px;">
+                                        Crear
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div style="height: 134px; width: 30%; margin-left: 10px;">
+
+                                <div style="text-align: center;">
+                                         
+                                    <button (click)="PanelConfiguracionAsignaturas(false)" mat-raised-button style="height: 125px; width: 120px; border-radius: 0px; border-bottom-left-radius: 100px; border-bottom-right-radius: 100px; background-color: rgb(50, 50, 50); color: white;">
+                                        <mat-icon style="transform: scale(3.5);">settings</mat-icon>
+                                    </button>
+                                    
+                                </div>
+                            <!--  
+                                <div style="padding-top: 9px; text-align: end;">
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: rgb(50, 50, 50); color: white; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
+                                            Borrar
+                                        </button>    
+                                    </div>
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: rgb(50, 50, 50); color: white; border-radius: 20px; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px; margin-top: 5px;">
+                                            Actualizar
+                                        </button>    
+                                    </div>
+
+                                </div>
+                            -->
+                            </div>
+                            
+                        </div>
+
+                    </mat-card-content>
+                </mat-card> 
+
+                <mat-card style="height: 140px; width: 50%; padding: 0%; margin: 5px; background-color: rgb(50, 50, 50); border: 3px solid rgb(50, 50, 50);">
+                    <mat-card-content>
+
+                        <div style="display: flex;">
+
+                            <div style="height: 134px; width: 70%; background-color: rgb(255, 255, 255); border-end-end-radius: 100px; border-top-right-radius: 100px;">
+
+                                <div style="padding-top: 5px; padding-left: 15px;">
+
+                                    <h2 style="margin: 0%;"><b><u>Inscibirme en una asignatura</u></b></h2>  
+                                    
+                                    <p style="margin: 0%;">Inscribete en una asignatura para digitar nuevas notas</p>
+                                    <p style="margin: 0%; color: rgb(135, 135, 135);">Solo podras inscibirte a asignaturas que sean de tu facultad</p>
+
+                                </div>
+
+                                <button (click)="PanelRegistrarmeAsignatura()" mat-raised-button style="width: 170px; margin-top: 9px; background-color: rgb(50, 50, 50); color: white;  border-radius: 0px; border-top-right-radius: 50px; border-bottom-right-radius: 50px;">
+                                    Inscribirme
+                                </button>                        
+                                
+                            </div>
+
+                            <div style="height: 100%; width: 30%; color: white; text-align: center;">
+
+                                <button *ngIf="carga_usuario" (click)="PanelUsaerData()" mat-raised-button style="height: 110px; background-color: white; margin-top: 12px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-bottom-right-radius: 100px;">
+                                    <img src={{usuario.avatar.avatar_ruta}} width="90">
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+
+            </div> 
+
+        </mat-tab>
+
+        <mat-tab label="Carrera - Ciclo">
+
+            <div style="display: flex; background-color: rgb(245, 245, 245);">
+
+                <mat-card style="height: 140px; width: 50%; padding: 0%; margin: 5px; border: 3px solid rgb(50, 50, 50);">
+                    <mat-card-content>
+
+                        <div style="display: flex;">
+
+                            <div style="background-color: rgb(50, 50, 50); height: 134px; width: 70%; color: white; border-end-end-radius: 100px; border-top-right-radius: 100px;">
+                                
+                                <div style="padding-top: 5px; padding-left: 15px;">
+
+                                    <h2 style="margin: 0%;"><b><u>Crear Carrera</u></b></h2>  
+                                    
+                                    <p style="margin: 0%;">La nueva Carrera debe contener la siguiente informacion:</p>
+
+                                    <p style="margin: 0%;">&#9658; Nombre &#9658; Duracion &#9658; Facultad</p>
+
+                                    <button (click)="PanelCrearCarrera()" mat-raised-button style="width: 170px; margin-top: 9px; border-radius: 20px;">
+                                        Crear
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div style="height: 134px; width: 30%; margin-left: 10px;">
+
+                                <div style="text-align: center;">
+                                         
+                                    <button (click)="PanelConfiguracionCarreras(false)" mat-raised-button style="height: 125px; width: 120px; border-radius: 0px; border-bottom-left-radius: 100px; border-bottom-right-radius: 100px; background-color: rgb(50, 50, 50); color: white;">
+                                        <mat-icon style="transform: scale(3.5);">settings</mat-icon>
+                                    </button>
+                                    
+                                </div>
+
+                                <!--  
+                                <div style="padding-top: 9px; text-align: end;">
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: rgb(50, 50, 50); color: white; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
+                                            Borrar
+                                        </button>    
+                                    </div>
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: rgb(50, 50, 50); color: white; border-radius: 20px; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px; margin-top: 5px;">
+                                            Actualizar
+                                        </button>    
+                                    </div>
+
+                                </div>
+                                -->
+
+                            </div>
+                            
+                        </div>
+
+                    </mat-card-content>
+                </mat-card> 
+
+                <mat-card style="height: 140px; width: 50%; padding: 0%; margin: 5px; background-color: rgb(50, 50, 50); border: 3px solid rgb(50, 50, 50);">
+                    <mat-card-content>
+
+                        <div style="display: flex;">
+
+                            <div style="background-color: white; height: 134px; width: 70%; border-end-end-radius: 100px; border-top-right-radius: 100px;">
+                                
+                                <div style="padding-top: 5px; padding-left: 15px;">
+
+                                    <h2 style="margin: 0%;"><b><u>Crear Ciclo</u></b></h2>  
+                                    
+                                    <p style="margin: 0%;">El ciclo debe contener la siguiente informacion:</p>
+
+                                    <p style="margin: 0%;">&#9658; Nombre &#9658; Carrera</p>
+
+                                    <button (click)="PanelCrearCiclo()" mat-raised-button style="width: 170px; margin-top: 9px; background-color: rgb(50, 50, 50); color: white; border-radius: 20px;">
+                                        Crear
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div style="height: 134px; width: 30%; margin-left: 10px;">
+
+                                <div style="text-align: center;">
+                                         
+                                    <button (click)="PanelConfiguracionCiclos(false)" mat-raised-button style="height: 125px; width: 120px; border-radius: 0px; border-bottom-left-radius: 100px; border-bottom-right-radius: 100px; background-color: white;">
+                                        <mat-icon style="transform: scale(3.5);">settings</mat-icon>
+                                    </button>
+                                    
+                                </div>
+
+                             <!--  
+                                <div style="padding-top: 9px; text-align: end;">
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: white; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
+                                            Borrar
+                                        </button>    
+                                    </div>
+
+                                    <div>
+                                        <button mat-raised-button style="width: 160px; height: 55px; background-color: white; border-radius: 20px; border-radius: 0px; border-top-left-radius: 50px; border-bottom-left-radius: 50px; margin-top: 5px;">
+                                            Actualizar
+                                        </button>    
+                                    </div>
+
+                                </div>
+                            -->
+                            </div>
+                            
+                        </div>
+
+                    </mat-card-content>
+                </mat-card> 
+
+            </div>    
+        </mat-tab>
+
+    </mat-tab-group>
+
+    <!----------------------------------------------- Listas ----------------------------------------------->
+
+    <div style="display: flex;">
+
+        <mat-card *ngIf="!facultad_activar&& !asignatura_activar" class="card-sección" style="border-bottom-left-radius: 20px;">
+
+            <mat-card-header class="CS-header">
+
+                <mat-card-title>Facultad</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una facultad</mat-card-subtitle>                 
+
+                <button (click)="PanelConfiguracionFacultad()" mat-icon-button style="margin-left: 55px;">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+                
+                <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+                    <mat-list-option *ngFor="let facultad of facultades; let i = index" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad)"
+                    [ngStyle]="{'background-color': carreras.length != 0 && facultad.id_facultad == carreras[0].facultad.id_facultad ? 'rgb(230, 230, 230)' : 'white'}">
+                        <mat-icon matListIcon>folder</mat-icon>
+                        {{facultad.nombre}}
+                        <mat-divider></mat-divider>
+                    </mat-list-option>
+
+                </mat-selection-list>
+
+            </mat-card-content>
+        </mat-card>    
+        
+        <!--------------------------------------------- Facultad --------------------------------------------->
+
+        <mat-card *ngIf="facultad_activar" style="width: 610px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88); border-bottom-left-radius: 20px;">
+
+            <mat-card-header class="CS-header" style="border-bottom: 1px solid rgb(224, 224, 224);">
+                
+                <mat-card-title>Facultades</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+            
+                <button (click)="facultad_activar = false" mat-icon-button style="margin-left: 405px;">
+                    <mat-icon>reply</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                <app-settings-faculty></app-settings-faculty>
+
+            </mat-card-content>
+        </mat-card>      
+           
+        
+        <mat-card *ngIf="!carrera_activar && !asignatura_activar" class="card-sección">
+
+            <mat-card-header class="CS-header">
+                
+                <mat-card-title>Carreras</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una carrera</mat-card-subtitle>                 
+            
+                <button (click)="PanelConfiguracionCarreras(true)" mat-icon-button style="margin-left: 63px;">
+                    <mat-icon>settings</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                <mat-selection-list [multiple]="false" style="padding: 0%;">
+                    
+                    <mat-list-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera)"
+                    [ngStyle]="{'background-color': ciclos.length != 0 && carrera.id_carrera == ciclos[0].carrera.id_carrera ? 'rgb(230, 230, 230)' : 'white'}">
+                        <mat-icon matListIcon>folder</mat-icon>
+                        {{carrera.nombre}}
+                        <mat-divider></mat-divider>
+                    </mat-list-option>
+
+                </mat-selection-list>
+
+            </mat-card-content>
+        </mat-card>     
+
+        <mat-card *ngIf="!carrera_activar && !ciclo_activar && !asignatura_activar" class="card-sección">
+
+            <mat-card-header class="CS-header">
+                
+                <mat-card-title>Ciclos</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione un ciclo</mat-card-subtitle>                 
+            
+                <button (click)="PanelConfiguracionCiclos(true)" mat-icon-button style="margin-left: 85px;">
+                    <mat-icon>settings</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+                    <mat-list-option *ngFor="let ciclo of ciclos" [value]="ciclo.id_ciclo" (click)="SeleccionCiclo(ciclo.id_ciclo)"
+                    [ngStyle]="{'background-color': asignaturas.length != 0 && ciclo.id_ciclo == asignaturas[0].ciclo.id_ciclo ? 'rgb(230, 230, 230)' : 'white'}">
+                        <mat-icon matListIcon>folder</mat-icon>
+                        {{ciclo.nombre}}
+                        <mat-divider></mat-divider>
+                    </mat-list-option>
+
+                </mat-selection-list>
+
+            </mat-card-content>
+        </mat-card> 
+        
+        <mat-card *ngIf="!facultad_activar && !carrera_activar && !ciclo_activar && !asignatura_activar" class="card-sección" style="border-bottom-right-radius: 20px;">
+
+            <mat-card-header class="CS-header">
+                
+                <mat-card-title>Asignaturas</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una asignatura</mat-card-subtitle>                 
+                
+                <button (click)="PanelConfiguracionAsignaturas(true)" mat-icon-button style="margin-left: 41px;">
+                    <mat-icon>settings</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+                        <mat-list-option *ngFor="let asignatura of asignaturas" [value]="asignatura.id_asignatura">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{asignatura.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                        
+                    </mat-selection-list>
+
+            </mat-card-content>
+        </mat-card>  
+
+        <!--------------------------------------------- Carrera --------------------------------------------->
+
+        <mat-card *ngIf="carrera_activar" style="width: 894px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+
+            <mat-card-header class="CS-header" style="border-bottom: 1px solid rgb(224, 224, 224);">
+                
+                <mat-card-title>Carreras</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+            
+                <button (click)="carrera_activar = false" mat-icon-button style="margin-left: 735px;">
+                    <mat-icon>reply</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                <app-settings-career></app-settings-career>
+
+            </mat-card-content>
+        </mat-card>  
+
+        <!--------------------------------------------- Ciclo --------------------------------------------->    
+        
+        <mat-card *ngIf="ciclo_activar" style="width: 610px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+
+            <mat-card-header class="CS-header" style="border-bottom: 1px solid rgb(224, 224, 224);">
+                
+                <mat-card-title>Ciclos</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+            
+                <button (click)="ciclo_activar = false" mat-icon-button style="margin-left: 445px;">
+                    <mat-icon>reply</mat-icon>
+                </button>
+
+            </mat-card-header>
+
+            <mat-card-content class="CS-content">
+
+                <app-settings-cycle></app-settings-cycle>
+
+            </mat-card-content>
+        </mat-card> 
+
+        <!--------------------------------------------- Asignatura --------------------------------------------->
+
+        <mat-card *ngIf="asignatura_activar" style="border-bottom-right-radius: 20px; width: 1195px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+
+            <mat-card-header class="CS-header" style="border-bottom: 1px solid rgb(224, 224, 224);">
+                
+                <mat-card-title>Asignaturas</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+                
+                <button (click)="asignatura_activar = false" mat-icon-button style="margin-left: 1000px;">
+                    <mat-icon>reply</mat-icon>
+                </button>
+    
+            </mat-card-header>
+    
+            <mat-card-content class="CS-content">
+    
+                <app-settings-subject></app-settings-subject>
+    
+            </mat-card-content>
+        </mat-card>  
+
+    </div>
+
+</div>
+
+<!-- 
+        ----------------------------------------------- Listas -----------------------------------------------
+
+        <div *ngIf="!carrera_activar! && !ciclo_activar && !asignatura_activar" style="display: flex;">
+
+            <mat-card class="card-sección" style="border-bottom-left-radius: 20px;">
+    
+                <mat-card-header class="CS-header">
+    
+                    <mat-card-title>Facultad</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una facultad</mat-card-subtitle>                 
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+                    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                        <mat-list-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{facultad.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>      
+            
+            <mat-card class="card-sección">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Carreas</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una carrera</mat-card-subtitle>                 
+                
+                    <button (click)="PanelConfiguracionCarreras()" mat-icon-button style="margin-left: 63px;">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+                        
+                        <mat-list-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{carrera.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>     
+    
+            <mat-card class="card-sección">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Ciclos</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione un ciclo</mat-card-subtitle>                 
+                
+                    <button (click)="PanelConfiguracionCiclos()" mat-icon-button style="margin-left: 85px;">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                        <mat-list-option *ngFor="let ciclo of ciclos" [value]="ciclo.id_ciclo" (click)="SeleccionCiclo(ciclo.id_ciclo)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{ciclo.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card> 
+            
+            <mat-card class="card-sección" style="border-bottom-right-radius: 20px;">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Asignaturas</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una asignatura</mat-card-subtitle>                 
+                    
+                    <button (click)="PanelConfiguracionAsignaturas(true)" mat-icon-button style="margin-left: 41px;">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                        <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                            <mat-list-option *ngFor="let asignatura of asignaturas" [value]="asignatura.id_asignatura">
+                                <mat-icon matListIcon>folder</mat-icon>
+                                {{asignatura.nombre}}
+                                <mat-divider></mat-divider>
+                            </mat-list-option>
+                            
+                        </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>  
+    
+        </div>
+    
+        ----------------------------------------------- Carrera -----------------------------------------------
+     
+        <div *ngIf="carrera_activar" style="display: flex;">
+    
+            <mat-card class="card-sección" style="border-bottom-left-radius: 20px;">
+    
+                <mat-card-header class="CS-header">
+    
+                    <mat-card-title>Facultad</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una facultad</mat-card-subtitle>                 
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+                    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                        <mat-list-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{facultad.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>      
+            
+            <mat-card style="width: 920px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Carreas</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+                
+                    <button (click)="carrera_activar = false" mat-icon-button style="margin-left: 735px;">
+                        <mat-icon>reply</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+                        
+                        <mat-list-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{carrera.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>     
+    
+        </div>
+    
+        ----------------------------------------------- Ciclo -----------------------------------------------
+    
+        <div *ngIf="ciclo_activar" style="display: flex;">
+    
+            <mat-card class="card-sección" style="border-bottom-left-radius: 20px;">
+    
+                <mat-card-header class="CS-header">
+    
+                    <mat-card-title>Facultad</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una facultad</mat-card-subtitle>                 
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+                    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                        <mat-list-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad" (click)="SeleccionFacultad(facultad.id_facultad)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{facultad.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>      
+            
+            <mat-card class="card-sección">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Carreas</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Seleccione una carrera</mat-card-subtitle>                 
+                
+                    <button (click)="PanelConfiguracionCarreras()" mat-icon-button style="margin-left: 63px;">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+                        
+                        <mat-list-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera" (click)="SeleccionCarrera(carrera.id_carrera)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{carrera.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card>     
+    
+            <mat-card style="width: 610px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+    
+                <mat-card-header class="CS-header">
+                    
+                    <mat-card-title>Ciclos</mat-card-title> 
+                    <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+                
+                    <button (click)="ciclo_activar = false" mat-icon-button style="margin-left: 445px;">
+                        <mat-icon>reply</mat-icon>
+                    </button>
+    
+                </mat-card-header>
+    
+                <mat-card-content class="CS-content">
+    
+                    <mat-selection-list [multiple]="false" style="padding: 0%;">
+    
+                        <mat-list-option *ngFor="let ciclo of ciclos" [value]="ciclo.id_ciclo" (click)="SeleccionCiclo(ciclo.id_ciclo)">
+                            <mat-icon matListIcon>folder</mat-icon>
+                            {{ciclo.nombre}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+    
+                    </mat-selection-list>
+    
+                </mat-card-content>
+            </mat-card> 
+            
+        </div>
+    
+    
+        ----------------------------------------------- Asignatura -----------------------------------------------
+    
+        <mat-card *ngIf="asignatura_activar" style="border-bottom-right-radius: 20px; width: 1195px; height: 421px; margin: 5px; padding: 0%; border: 2px solid rgb(21, 57, 88);">
+    
+            <mat-card-header class="CS-header" style="border-bottom: 1px solid rgb(224, 224, 224);">
+                
+                <mat-card-title>Asignaturas</mat-card-title> 
+                <mat-card-subtitle style="color: rgb(240, 240, 240);">Edicion</mat-card-subtitle>                 
+                
+                <button (click)="asignatura_activar = false" mat-icon-button style="margin-left: 1000px;">
+                    <mat-icon>reply</mat-icon>
+                </button>
+    
+            </mat-card-header>
+    
+            <mat-card-content class="CS-content">
+    
+                <app-settings-subject></app-settings-subject>
+    
+            </mat-card-content>
+        </mat-card>  
+    
+    </div>
+ -->

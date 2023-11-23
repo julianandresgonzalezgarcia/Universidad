@@ -1,0 +1,31 @@
+<div class="list-selection-panel">
+
+  <div mat-dialog-title class="LSP-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Seleccione una facultad</h1>   
+
+  </div>
+
+  <div mat-dialog-content class="LSP-content">
+
+    <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+      <mat-list-option *ngFor="let facultad of facultades" [value]="facultad" (click)="SeleccionFacultad(facultad)" mat-dialog-close style="width: 100%; height: 60px;" [ngStyle]="{'background-color': facultad.id_facultad == servicio.carreras_career_component[servicio.indice_lista].facultad.id_facultad ? 'rgb(230, 230, 230)' : 'transparent'}">
+
+        Facultad: {{facultad.nombre}}	&#9658; Direccion: {{facultad.ubicacion}}
+        
+        <mat-divider></mat-divider>
+      </mat-list-option>
+
+    </mat-selection-list>
+    
+  </div>
+
+</div>
+

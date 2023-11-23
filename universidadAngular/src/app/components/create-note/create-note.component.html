@@ -1,0 +1,124 @@
+<div class="modal-create-note">
+
+  <div mat-dialog-title style="color: white;">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button (click)="ConfirmarGuardadoNota()" mat-icon-button mat-dialog-close cdkFocusInitial>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h2 style="text-align: center;">Crear nota</h2>
+  </div>
+
+  <section id="screen">
+    
+    <div class="left">
+
+      <h2 class="title">Asignaturas</h2>
+
+      <div class="modal-create-note-selection-list">
+
+        <mat-selection-list [multiple]="false">
+
+          <mat-list-option *ngFor="let asignatura of asignaturas" style="height: 95px;" [value]="asignatura.id_asignatura" (click)="ListarAlumnosCarrera(asignatura.ciclo.carrera.id_carrera); nota.asignatura = asignatura; asignatura_id_seleccion = asignatura.id_asignatura">
+            
+            <mat-icon matListIcon>folder</mat-icon>
+            <p><u><b>{{asignatura.nombre}}</b></u></p> 
+            <p>&#9658; {{asignatura.ciclo.nombre}}</p>
+            <p>&#9658; {{asignatura.ciclo.carrera.nombre}}</p>
+            <p>&#9658; {{asignatura.ciclo.carrera.facultad.nombre}}</p>
+          
+            <mat-divider></mat-divider>
+            
+          </mat-list-option>
+          
+        </mat-selection-list>  
+
+      </div>
+
+    </div>
+
+    <div class="center">
+
+        <h2 class="title">Estudiantes</h2>
+        
+        <div class="modal-create-note-selection-list">
+
+          <div class="row" style="width: 90%; margin-left: 10px;">
+
+            <mat-form-field class="col-9" appearance="outline">
+
+              <mat-label>ID</mat-label>
+              <input [formControl]="fromNota[1]" [(ngModel)]="idAlumno" name="idAlumno" type="number" matInput placeholder="ID del alumno" (input)="AlumnoPorCarreraPorIdAlumno(idAlumno)">
+              <mat-error *ngIf="fromNota[1].hasError('required')">digite un Id</mat-error>
+
+            </mat-form-field> 
+
+            <div class="col-1">
+                <button (click)="ListarAlumnosCarrera(nota.asignatura.ciclo.carrera.id_carrera)" mat-fab [disabled]="recarga" color="success" style="transform: scale(0.8);">
+                    <mat-icon>autorenew</mat-icon>
+                </button>
+            </div>
+
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <mat-selection-list [multiple]="false">
+
+            <mat-list-option *ngFor="let alumno of alumnos" [value]="alumno.id_alumno" (click)="NotasAlumno(alumno.id_alumno); nota.alumno = alumno">
+              
+              <mat-icon matListIcon>account_circle</mat-icon>
+              ID:{{alumno.id_alumno}} {{alumno.nombre}} {{alumno.apellido}}
+
+            </mat-list-option>
+            
+          </mat-selection-list>
+          
+        </div>
+
+    </div>
+
+    <div class="right">
+
+      <h2 class="title">Nota</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nota</mat-label>
+        <input [formControl]="fromNota[0]" [(ngModel)]="nota.nota" name="nota" style="text-align: center;" type="number" min="0" max="5" step="0.1" matInput>
+        <mat-error *ngIf="fromNota[0].hasError('required')">digite una nota</mat-error>
+        <button (click)="GuardarNota(nota)" matSuffix mat-icon-button>
+            <mat-icon>save</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+
+      <div class="right-table">
+        
+        <table style="width: 100%;">
+
+          <tr>
+            <th>Id nota</th>
+            <th>Fecha</th>
+            <th>Nota</th>
+          </tr>
+
+          <tr *ngFor="let nota of notasAlumno">
+            <td>{{nota.id_nota}}</td>
+            <td>{{nota.fecha}}</td>
+            <td><b>{{nota.nota}}</b></td>
+          </tr>
+
+        </table>
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="modal-confirm-delete-student">
+    <h1 mat-dialog-title>Eliminar estudiante</h1>
+    <div mat-dialog-content>
+        <p>Desea eliminar al estudiente</p> 
+        <p><b>ID: {{alumno.id_alumno}} {{alumno.nombre}} gonzalez {{alumno.apellido}}</b>?</p>
+    </div>
+    <div mat-dialog-actions style="margin-left: 117px;">
+        <button mat-button mat-dialog-close cdkFocusInitial>No</button>
+        <button mat-button mat-dialog-close (click)="EliminarAlumno(alumno.id_alumno)" >Ok</button>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<table *ngIf="carga_lista" mat-table [dataSource]="servicio.asignaturas_subject_component" style="width: 100%; text-align: center;">
+
+  <ng-container matColumnDef="id_asignatura">
+    <th style="text-align: center;" mat-header-cell *matHeaderCellDef> ID Asignatura </th>
+    <td mat-cell *matCellDef="let element"> {{element.id_asignatura}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+
+      <mat-form-field style="margin-top: 15px;">
+        <mat-label>Nombre</mat-label>
+        <input [formControl]="formAsignaturasNombre[i]" [(ngModel)]="element.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+        <mat-error *ngIf="formAsignaturasNombre[i].hasError('required')">Digite el nombre de la asignatura</mat-error>
+      </mat-form-field>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creditos">
+    <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Creditos </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+
+      <mat-form-field style="margin-top: 15px; width: 45%;">
+        <mat-label>Creditos</mat-label>
+        <input [formControl]="formAsignaturasCreditos[i]" [(ngModel)]="element.creditos" name="creditos" type="number" min="1" max="5" step="1" matInput placeholder="Creditos" autocomplete="off">
+        <mat-error *ngIf="formAsignaturasCreditos[i].invalid">numero invalido</mat-error>
+      </mat-form-field>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ciclo">
+    <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Ciclo </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+
+      <button (click)="PanelListaAsignaturaSeleccion(i)" mat-flat-button [disabled]="habilitar_edicion[i]" class="button-data-content" style="color: rgb(50, 50, 50);">
+        {{element.ciclo.nombre}} &#9658; {{element.ciclo.carrera.nombre}} &#9658; {{element.ciclo.carrera.facultad.nombre}} 
+      </button>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="usuario">
+    <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Docente </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+
+      <button (click)="PanelListarDocenteSeleccion(i)" mat-flat-button [disabled]="habilitar_edicion[i]" class="button-data-content" style="color: rgb(50, 50, 50);">
+        <div *ngIf="servicio.asignaturas_subject_component[i].usuario.id_usuario != null">{{element.usuario.correo}}</div> 
+        <div *ngIf="servicio.asignaturas_subject_component[i].usuario.id_usuario == null">...</div>
+      </button>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th style="text-align: center; border-bottom-right-radius: 100px;" mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell style="padding: 0%;" *matCellDef="let element; let i = index">
+
+      <div>
+
+        <button (click)="ActualizarAsignatura(i, element.id_asignatura, element)" mat-icon-button>
+           <mat-icon>update</mat-icon>
+        </button>
+
+        <button mat-icon-button [matMenuTriggerFor]="confirmar">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <mat-menu #confirmar="matMenu">
+          <button (click)="BorrarAsignatura(element.id_asignatura)" mat-menu-item>
+            <mat-icon>delete_outline</mat-icon>        
+            Borrar la asignatura
+          </button>
+        </mat-menu>
+
+      </div>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,164 @@
+<div *ngIf="carga" class="panel-user-data">
+    <!--  
+    <img mat-dialog-title src="https://cdn-icons-png.flaticon.com/512/4202/4202831.png" width="100">
+    -->
+    <mat-dialog-content style="padding: 0%; margin: -24px;">
+
+        <mat-card style="padding: 0%;">
+
+            <mat-card-header class="card-header">
+                <!-- 
+                <div mat-card-avatar cdkFocusInitial class="example-header-image"></div>{{vista ? 'visibility_off' : 'visibility'}}
+                -->
+                <button (click)="PaneAvatar()" mat-icon-button mat-card-avatar [style.background-image]="'url(&quot;'+ servicio.avatar.avatar_ruta +'&quot;)'" class="example-header-image"></button>
+                <mat-card-title class="card-title"> {{usuario.nombre}} {{usuario.apellido}} </mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{usuario.facultad.nombre}} - {{usuario.correo}}</mat-card-subtitle>
+
+            </mat-card-header>
+
+            <mat-card-content style="text-align: center;">
+
+                <div style="margin-top: 20px;">
+                    <div>
+                        <mat-form-field class="input-Usuario">
+                            <mat-label>Nombre</mat-label>
+                            <input [formControl]="formNombre" [(ngModel)]="usuario.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+                            <mat-error *ngIf="formNombre.hasError('required')">Digite un nombre</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-Usuario">
+                            <mat-label>Apellido</mat-label>
+                            <input [formControl]="formApellido" [(ngModel)]="usuario.apellido" name="apellido" matInput placeholder="Apellido" autocomplete="off">
+                            <mat-error *ngIf="formApellido.hasError('required')">Digite un apeliido</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field class="input-Usuario">
+                            <mat-label>Correo</mat-label>
+                            <input [formControl]="formCorreo" [(ngModel)]="usuario.correo" name="correo" matInput placeholder="Usuario@gmail.com" autocomplete="off">
+                            <mat-error *ngIf="formCorreo.hasError('required') || formCorreo.hasError('email')">Digite un correo</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-Usuario">
+                            <mat-label>Contraseña</mat-label>
+                            <input [formControl]="formClave" [(ngModel)]="usuario.clave" name="clave" [type]="vista ? 'password' : 'text' " matInput autocomplete="off">
+                            <button mat-icon-button matSuffix (click)="vista = !vista">
+                                <mat-icon>{{vista ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="formClave.hasError('required')">Digite una contraseña</mat-error>
+                        </mat-form-field>
+                    </div> 
+                    <div>
+                        <mat-form-field class="input-Usuario">
+                            <mat-label>Facultad</mat-label>
+                            <mat-select [formControl]="formFacultad" [(ngModel)]="usuario.facultad.id_facultad" name="facultad.id_facultad">
+                                <mat-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad">
+                                    {{facultad.nombre}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="formFacultad.hasError('required')">Digite un correo</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>       
+            </mat-card-content>
+          </mat-card>
+          
+        <!-- 
+        <mat-card style="padding: 0%;">
+            <mat-card-content>
+                <section id="screen">
+
+                    <div class="left">
+                        <div style="margin-top: 94px">
+                            <img mat-dialog-title src="https://cdn-icons-png.flaticon.com/512/4202/4202831.png" width="206">
+                        </div>
+                    </div>
+
+                    <div class="right">
+
+                        <div style="margin-top: 35px;">
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput placeholder="Nombre">
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput placeholder="Apellido">
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Correo</mat-label>
+                                    <input matInput placeholder="Usuario@gmail.com">
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Contraseña</mat-label>
+                                    <input type="password" matInput>
+                                </mat-form-field>
+                            </div>   
+                        </div>
+
+ 
+                        <button mat-button mat-dialog-close>No</button>
+                        <button mat-button mat-dialog-close>Ok</button>
+                    
+                    </div>
+
+                </section>
+            </mat-card-content>
+          </mat-card>
+          -->
+        <!--  
+        <div>
+            <mat-form-field class="inputUsuario" style="margin-bottom: 5px;">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Usuario@gmail.com" autocomplete="off">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="inputUsuario" style="margin-bottom: 5px;">
+                <mat-label>Apellido</mat-label>
+                <input matInput placeholder="Usuario@gmail.com" autocomplete="off">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="inputUsuario" style="margin-bottom: 5px;">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder="Usuario@gmail.com" autocomplete="off">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="inputUsuario" style="margin-bottom: 5px;">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Usuario@gmail.com" autocomplete="off">
+            </mat-form-field>
+        </div>
+        -->
+        
+    </mat-dialog-content>
+  
+    <mat-dialog-actions style="margin: -24px; background-color: rgb(245, 245, 245);">
+
+        <div class="dialog-actions1">
+            <button mat-raised-button class="button-dialog-actions" cdkFocusInitial mat-dialog-close>Cerrar</button>  
+        </div>
+
+        <div class="dialog-actions2">
+            <button mat-raised-button class="button-dialog-actions" (click)="Actualizar(usuario.id_usuario, usuario)">Actualizar</button>     
+        </div>
+    </mat-dialog-actions> 
+
+</div>
+

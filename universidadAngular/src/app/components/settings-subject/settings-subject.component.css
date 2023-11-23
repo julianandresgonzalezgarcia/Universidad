@@ -1,0 +1,29 @@
+.mat-column-id_asignatura{
+    width: 100px;
+}
+
+.mat-column-creditos{
+    width: 30px;
+}
+
+.mat-column-ciclo{
+    border-left: 1px solid rgb(224, 224, 224);
+    border-right: 1px solid rgb(224, 224, 224);
+}
+
+.button-data-content{
+    min-width: 90%; 
+    max-width: 100%; 
+    box-shadow: rgb(50, 50, 50) 4px 4px; 
+    border: 1px solid rgb(50, 50, 50); 
+    border-radius: 20px;
+}
+
+th{
+    background-color: rgb(50, 50, 50);
+    color: white;
+}
+
+td{
+    background-color: white;
+}

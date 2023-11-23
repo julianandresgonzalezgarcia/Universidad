@@ -1,0 +1,207 @@
+<mat-dialog-content class="dialog-content">
+    <section id="screen">
+
+        <div class="left">
+
+            <div class="left-description">
+                <div style="padding-top: 5px;">
+                    <img src="../../../assets/agregar-usuario.png" width="55" style="margin-right: 10px;">
+                    <b style="font-size: 22px;">Crear estudiante </b>
+                </div>
+
+            </div>
+
+            <img src="../../../assets/People flying-bro.png" width="300" style="margin-top: 20px;">
+        </div>
+
+        <div class="right">
+
+            <div>
+
+                <div align="end" style="margin-bottom: 10px;">
+                    <button mat-icon-button mat-dialog-close disableRipple>
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                
+                <form>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input [formControl]="fromCreateStudent[0]" [(ngModel)]="alumno.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+                        <mat-error *ngIf="fromCreateStudent[0].hasError('required')">Digite un nombre</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Apellido</mat-label>
+                        <input [formControl]="fromCreateStudent[1]" [(ngModel)]="alumno.apellido" name="apelldio" matInput placeholder="Apellido" autocomplete="off">
+                        <mat-error *ngIf="fromCreateStudent[1].hasError('required')">Digite un apellido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Facultad</mat-label>
+                        <mat-select [formControl]="fromCreateStudent[2]">
+                            <mat-option *ngFor="let facultad of facultades" (click)="SeleccionFacultad(facultad.id_facultad)" [value]="facultad.id_facultad">
+                                {{facultad.nombre}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="fromCreateStudent[2].hasError('required')">Seleccione una facultad</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Carrera</mat-label>
+                        <mat-select [formControl]="fromCreateStudent[3]" [(ngModel)]="alumno.carrera" name="carrera">
+                            <mat-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera">
+                                {{carrera.nombre}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="fromCreateStudent[2].hasError('required')">Seleccione una facultad</mat-error>
+                        <mat-error *ngIf="fromCreateStudent[3].hasError('required') && fromCreateStudent[2].valid">Seleccione una Carrera</mat-error>
+                    </mat-form-field>
+
+                    <button (click)="GuardarAlumno(alumno)" class="button-action" mat-raised-button cdkFocusInitial>
+                        Crear
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+</mat-dialog-content>
+
+<!--  
+<div mat-dialog-title style="padding: 0%; margin-top: -24px; margin-left: -24px; margin-right: -24px;">
+
+
+    <div align="end">
+        <button mat-icon-button mat-dialog-close disableRipple>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div style="margin-left: 20px;"> 
+        <img src="../../../assets/gorra.png" width="50" style="margin-right: 10px;">  
+        <b style="font-size: 22px;">Crear estudiante  </b>
+    </div>
+
+</div>
+
+<mat-dialog-content style="width: 570px; padding: 0%;">
+    <section style="display: flex; text-align: center;">
+
+        <div style="width: 50%; height: 100%;">
+            <img src=".././../../assets/Students-bro-create-panel.png" width="250" height="350">
+        </div>
+
+        <div style="width: 50%; height: 100%;">
+
+            <div>
+                <form>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input [formControl]="fromCreateStudent[0]" [(ngModel)]="alumno.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+                        <mat-error *ngIf="fromCreateStudent[0].hasError('required')">Digite un nombre</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Apellido</mat-label>
+                        <input [formControl]="fromCreateStudent[1]" [(ngModel)]="alumno.apellido" name="apelldio" matInput placeholder="Apellido" autocomplete="off">
+                        <mat-error *ngIf="fromCreateStudent[1].hasError('required')">Digite un apellido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Facultad</mat-label>
+                        <mat-select [formControl]="fromCreateStudent[2]">
+                            <mat-option *ngFor="let facultad of facultades" (click)="SeleccionFacultad(facultad.id_facultad)" [value]="facultad.id_facultad">
+                                {{facultad.nombre}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="fromCreateStudent[2].hasError('required')">Seleccione una facultad</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;" appearance="outline">
+                        <mat-label>Carrera</mat-label>
+                        <mat-select [formControl]="fromCreateStudent[3]" [(ngModel)]="alumno.carrera" name="carrera">
+                            <mat-option *ngFor="let carrera of carreras" [value]="carrera.id_carrera">
+                                {{carrera.nombre}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="fromCreateStudent[2].hasError('required')">Seleccione una facultad</mat-error>
+                        <mat-error *ngIf="fromCreateStudent[3].hasError('required') && fromCreateStudent[2].valid">Seleccione una Carrera</mat-error>
+                    </mat-form-field>
+
+                    <button (click)="GuardarAlumno(alumno)" mat-raised-button cdkFocusInitial style="background-color: rgb(21, 57, 88); color: white; width: 90%; border-radius: 20px;">
+                        Crear
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+</mat-dialog-content>
+-->
+
+
+<!-- 
+<div style="width: 570px; height: 400px;">
+
+    <div mat-dialog-title>
+        <h2>
+            <img src="../../../assets/gorra.png" width="50">
+            <b>Crear estudiante</b>
+        </h2>
+    </div>
+
+    <section style="display: flex; text-align: center;">
+
+        <div style="width: 50%; height: 100%;">
+            <img src=".././../../assets/Students-bro-create-panel.png" width="250">
+        </div>
+
+        <div style="width: 50%; height: 100%;">
+
+            <div mat-dialog-content>
+                <form>
+
+                    <mat-form-field style="width: 80%;">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre">
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput placeholder="Apellido">
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;">
+                        <mat-label>Facultad</mat-label>
+                        <mat-select>
+                            <mat-option>opcion</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 80%;">
+                        <mat-label>Carrera</mat-label>
+                        <mat-select>
+                            <mat-option>opcion</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+            </div>
+
+            <div mat-dialog-actions>
+                <button mat-raised-button mat-dialog-close cdkFocusInitial
+                    style="background-color: rgb(21, 57, 88); color: white; width: 100%; border-radius: 20px;">
+                    Crear
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+</div> 
+-->

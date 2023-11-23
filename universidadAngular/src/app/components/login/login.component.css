@@ -1,0 +1,72 @@
+.panelLogin{
+    background-color: rgba(240, 244, 247, 0);
+    background-size:cover;
+    position: absolute;
+    height: 549px;
+    width: 1110px;
+    top: 8.5%;
+    padding: 0%;
+    border-radius: 20px;
+    /*box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;*/
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-content{
+    background-color: white; 
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+}
+
+.isquierdaSesion{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /*background-color: rgba(246,226,176);
+    background-color: rgb(255, 255, 255);*/
+    width: 80%;
+    height: 500px;
+    /*height: 100vh;*/
+}
+
+.derechaSesion{
+    border-end-end-radius: 20px;
+    /*background-color: rgb(255, 255, 255);*/
+    text-align: center;
+    width: 50%;
+    height: 500px;
+}
+
+.isquierdaRegistrase{
+    border-end-start-radius: 20px;
+    /*background-color: rgb(255, 255, 255);*/
+    text-align: center;
+    width: 50%;
+    height: 500px;
+}
+
+.derechaRegistrase{
+    border-end-end-radius: 20px;
+    /*background-color: rgba(246,226,176);
+    background-color: rgb(255, 255, 255);*/
+    width: 80%;
+    height: 500px;
+    /*height: 100vh;*/
+}
+
+#pantalla{
+    display: flex;
+}
+
+.inputUsuario {
+    width: 340px;
+}
+
+.button-login{
+    margin-left: 215px; 
+    background-color: rgb(21, 57, 88); 
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+::ng-deep .mat-tab-label {
+    color:rgb(255, 255, 255);
+}

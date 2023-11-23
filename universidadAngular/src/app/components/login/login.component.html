@@ -1,0 +1,141 @@
+<img src="../assets/Logo.png" height="55">
+<div class="container">
+    <mat-card class="panelLogin">  
+        
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+
+            <mat-tab label="Iniciar sesion">
+                <mat-card-content class="card-content"> 
+
+                <section id="pantalla">
+
+                    <div class="isquierdaSesion"> 
+
+                    <img src="../../../assets/Reset password.gif" height="500" style="margin-left: 80px;">
+                     <!--                 
+                    <img src="../assets/imagen_1 (6).png" width="683" height="500" style="border-bottom-left-radius: 18px;">
+                    -->
+                    </div> 
+
+                    <div class="derechaSesion">
+                        <form>
+                            <div style="margin-top: 65px;">
+                                <img src="../assets/password.png" width="80">
+                                <h2>Iniciar sesion</h2>
+                                <div>
+                                <mat-form-field class="inputUsuario" style="margin-bottom: 5px;">
+                                    <mat-label>Correo</mat-label>
+                                    <input [formControl]="formUsername" [(ngModel)]="username" name="username" matInput placeholder="Usuario@gmail.com" autocomplete="off">
+                                    <mat-error *ngIf="formUsername.hasError('required') || formUsername.hasError('email')">Por favor digite un correo</mat-error>
+                                </mat-form-field>
+                                </div>
+
+                                <div>
+                                <mat-form-field class="inputUsuario">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input [formControl]="fromPass" [(ngModel)]="pass" name="pass" [type]="vista ? 'password' : 'text'" matInput autocomplete="off">
+                                    <button mat-icon-button matSuffix (click)="vista = !vista">
+                                        <mat-icon>{{vista ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="fromPass.hasError('required')">Por favor digite una contraseña</mat-error>
+                                </mat-form-field>
+                                </div>
+
+                            </div>
+
+                            <div style="margin-top: 20px; margin-left: 50px;">
+
+                                <button (click)="Login(username, pass)" mat-raised-button class="button-login">Ingresar</button>  
+
+                            </div>
+                        </form>
+                        
+                    </div>
+                </section>
+                </mat-card-content>
+
+            </mat-tab>
+            <mat-tab label="Registrarse ">
+                <mat-card-content class="card-content"> 
+
+                    <section id="pantalla">
+
+                        <div class="isquierdaRegistrase">
+                            <form>       
+                                <div style="margin-top: 20px;">
+                                    <img src="../assets/password.png" width="80">
+                                    <h2>Registrarse</h2>
+                                    
+                                        <div>
+                                            <mat-form-field class="inputUsuario">
+                                                <mat-label>Nombre</mat-label>
+                                                <input [formControl]="formNombre" [(ngModel)]="usuario.nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+                                                <mat-error *ngIf="formNombre.hasError('required')">Digite un nombre</mat-error>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field class="inputUsuario">
+                                                <mat-label>Apellido</mat-label>
+                                                <input [formControl]="formApellido" [(ngModel)]="usuario.apellido" name="apeliido" matInput placeholder="Apeliido" autocomplete="off">
+                                                <mat-error *ngIf="formApellido.hasError('required')">Digite el apeliido</mat-error>
+                                            </mat-form-field>
+                                        </div>  
+
+                                        <div>
+                                            <mat-form-field class="inputUsuario">
+                                                <mat-label>Correo</mat-label>
+                                                <input [formControl]="formCorreo" [(ngModel)]="usuario.correo" name="correo" matInput placeholder="Usuario@gmail.com" autocomplete="off">
+                                                <mat-error *ngIf="(formCorreo.hasError('email') || formCorreo.hasError('required')) && !correoExistente">Digite un correo</mat-error>
+                                                <mat-hint style="color: red;" *ngIf="correoExistente">El correo ya existe</mat-hint>  
+                                            </mat-form-field>
+                                        </div>
+                    
+                                        <div>
+                                            <mat-form-field class="inputUsuario">
+                                                <mat-label>Contraseña</mat-label>
+                                                <input [formControl]="formClave" [(ngModel)]="usuario.clave" name="clave" [type]="vista ? 'password' : 'text'" matInput>
+                                                <button mat-icon-button matSuffix (click)="vista = !vista">
+                                                    <mat-icon>{{vista ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                </button>
+                                                <mat-error *ngIf="formClave.hasError('required')">Digite una contraseña</mat-error>          
+                                            </mat-form-field>
+                                        </div>     
+                                        
+                                        <div>
+                                            <mat-form-field class="inputUsuario">
+                                                <mat-label>Facultad</mat-label>
+                                                <mat-select [formControl]="formFacultad" [(ngModel)]="usuario.facultad" name="facultad">
+                                                    <mat-option *ngFor="let facultad of facultades" [value]="facultad.id_facultad">
+                                                        {{facultad.nombre}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="formFacultad.hasError('required')">Digite un correo</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                </div>
+                
+                                <div style="margin-top: 10px; margin-left: 50px;">
+                
+                                    <button (click)="Guardar(usuario)" mat-raised-button class="button-login">Registrar</button>  
+
+                                </div>
+                            </form>
+                        </div>   
+
+                        <div class="derechaRegistrase">
+                            <!--  
+                            <img src="../assets/imagen_1 (6).png" width="683" height="500" style="border-end-start-radius: 18px; transform: scaleX(-1);">
+                            -->
+                            <img src="../../../assets/Computer login.gif" height="500" style="margin-left: 80px;">
+
+                        </div>
+                    </section>
+                </mat-card-content>
+
+            </mat-tab>
+
+        </mat-tab-group>
+        
+    </mat-card> 
+</div>

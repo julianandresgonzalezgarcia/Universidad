@@ -1,0 +1,198 @@
+<div class="form-group row">
+
+    <mat-card class="card-student">
+        <mat-card-content>
+
+            <section id="screen">
+
+                <div class="left">
+                    <h3 style="margin-top: 10px;"><b>Crear un estudiante</b></h3>
+                    <p>Ingresa los datos del estudiante que vas a registrar</p>
+                    <button (click)="PanelCrearAlumno()" mat-raised-button class="button-student">Crear</button>
+                </div>
+
+                <div class="right">
+                    <img src="../../../assets/Students-bro1.png" height="170">
+                </div>
+
+            </section>
+
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-student1">
+        <mat-card-content style="margin-top: 10px;">
+
+            <h1 style="font-size: 50px;">{{alumnos.length}}</h1>
+            <p>Cantidad de estudiantes</p>
+            <mat-icon style="margin-top: 10px; margin-left: 120px; transform: scale(2.9); color: rgba(255, 255, 255, 0.5);">group</mat-icon>
+
+        </mat-card-content>
+    </mat-card>
+
+    <mat-grid-list cols="1" rowHeight="56px" style="width: 532px; margin: 10px;">
+        <mat-grid-tile rowspan="2">
+
+            <button (click)="panelDirectoNotasAlumno()" mat-raised-button class="button-action-student">
+                <mat-icon style="transform: scale(2.5); margin-top: 25px;">assessment</mat-icon>
+                <div style="margin-top: 10px;">
+                    Notas alumno
+                </div>
+            </button>
+
+            <button (click)="panelDirectoActualizarAlumno()" mat-raised-button class="button-action-student">
+                <mat-icon style="transform: scale(2.5); margin-top: 25px;">update</mat-icon>
+                <div style="margin-top: 10px;">
+                    Actualizar alumno
+                </div>
+            </button>
+
+            <button (click)="PanelDirectoBorrarAlumno()" mat-raised-button class="button-action-student">
+                <mat-icon style="transform: scale(2.5); margin-top: 25px;">delete</mat-icon>
+                <div style="margin-top: 10px;">
+                    Borrar alumno
+                </div>
+            </button>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile rowspan="1">
+
+            <mat-card style="width: 100%; background-color: rgb(21, 57, 88); border-radius: 20px; color: white;">
+                <mat-card-content>
+
+                    <b>Usuario:</b> {{usuario.correo}} &nbsp; &nbsp; 
+                    <b>Facultades:</b> {{facultades.length}} &rarr; <b>Carreras:</b> {{carreras.length}} &nbsp; &nbsp; 
+                    <b>Fecha:</b> {{fecha}}
+
+                </mat-card-content>
+            </mat-card>
+
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+</div>
+
+<div class="row" style="margin-top: 20px;">
+
+    <mat-form-field class="col-2" appearance="outline" >
+        <mat-label>ID</mat-label>
+        <input [(ngModel)]="id_alum" type="number" matInput placeholder="Id alumno" (input)="AlumnoPorId(id_alum)">
+    </mat-form-field>
+
+    <mat-form-field class="col-3" appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input [(ngModel)]="busqueda" type="text" matInput placeholder="nombre/apellido/facultad/carrera/ubicacion" (input)="BuscarAlumnoPorTexto(busqueda)">
+    </mat-form-field>
+
+    <mat-form-field class="col-3" appearance="outline">
+        <mat-label>Facultad</mat-label>
+        <mat-select [(ngModel)]="selecciones[0]">
+            <mat-option *ngFor="let facultad of facultades" (click)="SeleccionFacultad(facultad.id_facultad); BuscarAlumnosPorFacultad(facultad.id_facultad)" [value]="facultad.id_facultad">
+                {{facultad.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>   
+
+    <mat-form-field class="col-3" appearance="outline">
+        <mat-label>Carrera</mat-label>
+        <mat-select [(ngModel)]="selecciones[1]">
+            <mat-option *ngFor="let carrera of carreras" (click)="BuscarAlumnosPorCarrera(carrera.id_carrera)" [value]="carrera.id_carrera">
+                {{carrera.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>  
+
+    <div class="col-1">
+        <button (click)="ListarAlumnos()" mat-fab [disabled]="recarga" color="success" style="transform: scale(0.8);">
+            <mat-icon>autorenew</mat-icon>
+        </button>
+    </div>
+
+</div>
+
+
+
+<div class="content-student-data">
+    
+    <mat-card *ngFor="let alumno of alumnos" class="card-student-data">
+
+        <mat-card-content>
+
+            <div class="row">
+
+                <div class="col-1">
+                    <img src="../../../assets/gorra.png" width="70">
+                </div>
+
+                <div class="col-6" style="padding: 0%;">
+                    <mat-card-title>
+
+                        {{alumno.nombre}} {{alumno.apellido}}
+
+                        <button (click)="BuscarAlumnosPorCarrera(alumno.carrera.id_carrera)" mat-stroked-button class="button-student-data">
+                            {{alumno.carrera.nombre}}
+                        </button>
+
+                        <button (click)="BuscarAlumnosPorFacultad(alumno.carrera.facultad.id_facultad)" mat-stroked-button class="button-student-data">
+                            {{alumno.carrera.facultad.nombre}}
+                        </button>
+
+                    </mat-card-title>
+
+                    <mat-card-subtitle>
+                        <b>Facultad:</b> {{alumno.carrera.facultad.nombre}}
+                        &rarr;
+                        <b>Carrera:</b> {{alumno.carrera.nombre}}
+                    </mat-card-subtitle>
+
+                </div>
+
+                <div class="col-3" style="text-align: center;">
+
+                    <mat-card
+                        style="background-color: rgb(245, 245, 245); border-radius: 100px; border: 1px solid rgb(21, 57, 88); width: 100%;">
+                        <mat-card-content>
+
+                            <div>
+                                <b>Duracion de la carrera:</b> {{alumno.carrera.duracion}} Semestres
+                            </div>
+
+                            <div>
+                                <b>Facultad ubicada en:</b> {{alumno.carrera.facultad.ubicacion}}
+                            </div>
+
+                        </mat-card-content>
+                    </mat-card>
+
+
+                </div>
+
+                <div class="col" style="padding: 0%; border-left: 1px solid rgb(21, 57, 88);">
+
+                    <div style="margin-left: 30px; margin-top: 8px;">
+
+                        <button (click)="PanelNotasAlumno(alumno.id_alumno)" style="margin-left: 5px;" mat-icon-button>
+                            <mat-icon>assessment</mat-icon>
+                        </button>
+
+                        <button (click)="PanelActualizarAlumno(alumno.id_alumno)" style="margin-left: 5px;" mat-icon-button>
+                            <mat-icon>update</mat-icon>
+                        </button>
+
+                        <button (click)="panelConfirmarBorrado(alumno.id_alumno)" style="margin-left: 5px;" mat-icon-button>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+
+                        <mat-card-subtitle style="margin-left: 32px;">Id alumno:
+                            {{alumno.id_alumno}}</mat-card-subtitle>
+                    </div>
+
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>    
+</div>
+

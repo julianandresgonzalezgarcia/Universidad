@@ -1,0 +1,51 @@
+<div class="list-selection-panel">
+
+  <div mat-dialog-title class="LSP-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Seleccione un ciclo</h1>   
+
+  </div>
+
+  <div mat-dialog-content class="LSP-content">
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let ciclo of ciclos" class="LSP-content-expansion-panel" (click)="ListarAsignaturasPorSeleccionCiclo(ciclo.id_ciclo)" [ngStyle]="{'background-color': ciclo.id_ciclo == servicio.asignaturas_subject_component[servicio.indice_lista].ciclo.id_ciclo ? 'rgb(230, 230, 230)' : 'transparent'}">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ciclo.nombre}} &#9658; {{ciclo.carrera.nombre}} &#9658; {{ciclo.carrera.facultad.nombre}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <mat-divider></mat-divider>
+
+        <table style="width: 100%;">
+
+          <tr>
+            <th>Asignatura</th>
+            <th>Creditos</th>
+          </tr>
+
+          <tr *ngFor="let asignatura of asignaturas">
+            <td>&#9658; {{asignatura.nombre}}</td>
+            <td>{{asignatura.creditos}}</td>
+          </tr>
+
+        </table>
+
+        <mat-action-row>
+          <button (click)="SelecionCiclo(ciclo)" mat-stroked-button mat-dialog-close> Seleccionar </button>
+        </mat-action-row>        
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+
+
+</div>

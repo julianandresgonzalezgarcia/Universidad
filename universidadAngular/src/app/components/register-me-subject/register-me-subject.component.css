@@ -1,0 +1,83 @@
+.modal-create-subject{
+    width: 650px;
+}
+
+.MCS-title-content{
+    background-color: rgb(21, 57, 88); 
+    color: white; 
+    margin: -24px;
+}
+
+.MCS-content{
+    height: 342px;
+    text-align: center; 
+    border: 2px solid rgb(21, 57, 88); 
+    padding-top: 27px;
+}
+
+.MCS-content-credits{
+    margin-left: 8px; 
+    width: 93%; 
+    border-radius: 5px;    
+    border: 1px solid rgb(224, 224, 224); 
+}
+
+.MCS-content-subject-list{
+    height: 209px; 
+    padding: 0%; 
+    border: 1px solid rgb(224, 224, 224); 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    overflow-y: auto;
+}
+
+.MCS-content-subject-list::-webkit-scrollbar{
+    width: 15.5px;
+}
+
+.MCS-content-subject-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.MCS-content-subject-list::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}
+
+.MCS-content-user-data{
+    height: 209px; 
+    padding: 0%; 
+    border: 1px solid rgb(224, 224, 224); 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    overflow-y: auto;
+}
+
+.MCS-content-user-data::-webkit-scrollbar{
+    width: 15.5px;
+}
+
+.MCS-content-user-data::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.MCS-content-user-data::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}
+
+.MCS-actions{
+    background-color: rgb(21, 57, 88); 
+    margin-left: -24px; 
+    margin-right: -24px;
+}
+
+.MCS-actions-button-create-subject{
+    background-color: white; 
+    height: 60px; 
+    border-radius: 0px; 
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px;
+}

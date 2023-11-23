@@ -1,0 +1,48 @@
+.modal-settings-notes-student{
+    width: 1040px;
+}
+
+.column_title{
+    text-align: center;
+}
+
+.column_info{
+    height: 65px;
+}
+
+.mat-column-Id_nota{
+    width: 80px;
+}
+
+.modal-SNS-title{
+    background-color: rgb(50, 50, 50); 
+    color: white; 
+    margin: -24px; 
+    padding: 5px;
+}
+
+.modal-SNS-content{
+    padding-right: 0%;
+    border: 3px solid rgb(50, 50, 50); 
+    margin: -24px;
+}
+
+.modal-SNS-content-zone-table{
+    margin-top: 30px; 
+    max-height: 350px; 
+    overflow: auto;
+}
+
+.modal-SNS-content-zone-table::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.modal-SNS-content-zone-table::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+.modal-SNS-content-zone-table::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}

@@ -1,0 +1,74 @@
+<div class="modal-create-career">
+
+  <div mat-dialog-title class="MCC-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Crear Carrera</h1>
+
+  </div>
+
+  <form>
+
+    <div mat-dialog-content class="MCC-content">
+
+      <div class="MCC-content-zone">
+
+        <div class="MCC-content-zone-left">
+
+          <mat-selection-list [multiple]="false" style="padding: 0%;">
+            
+            <mat-list-option *ngFor="let facultad of facultades" [value]="facultad" (click)="carrera.facultad = facultad">
+              
+              <mat-icon matListIcon>account_balance</mat-icon>
+              <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"><u>{{facultad.nombre}}</u></p>  
+              <p style="font-family: Impact, Haettenschweiler, sans-serif">&bull; {{facultad.ubicacion}}</p>
+              
+              <mat-divider></mat-divider>
+
+            </mat-list-option>
+            
+          </mat-selection-list>
+
+        </div>
+
+        <div class="MCC-content-zone-right">
+
+          <div style="text-align: center; margin-top: 10px;">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input [formControl]="formCarrera[0]" [(ngModel)]="carrera.nombre" name="nombre" matInput placeholder="nombre" autocomplete="off">
+              <mat-error *ngIf="formCarrera[0].hasError('required')">Digite el nombre</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Semestres</mat-label>
+              <input [formControl]="formCarrera[1]" [(ngModel)]="carrera.duracion" name="duracion" matInput type="number" 
+              [min]="1" 
+              [step]="1" 
+              placeholder="EJ:8" autocomplete="off" style="height: 100px; font-size: 50px; text-align: center;">
+              <mat-error *ngIf="formCarrera[1].invalid">Valor invalido</mat-error>
+            </mat-form-field>       
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div mat-dialog-actions align="end" class="MCC-actions">
+      <button (click)="GuardarCarrera(carrera)" mat-button class="MCC-actions-button">
+        Crear
+      </button>
+    </div>
+
+  </form>
+  
+</div>

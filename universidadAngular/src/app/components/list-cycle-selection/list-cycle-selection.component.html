@@ -1,0 +1,33 @@
+<div class="list-selection-panel">
+
+  <div mat-dialog-title class="LSP-title">
+
+    <div align="end" style="margin-bottom: -20px;">
+      <button  mat-icon-button mat-dialog-close disableRipple>
+          <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="padding: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Seleccione una carrera</h1>
+
+  </div>
+
+  <div mat-dialog-content class="LSP-content">
+
+    <mat-selection-list [multiple]="false" style="padding: 0%;">
+
+      <mat-list-option *ngFor="let carrera of carreras" [value]="carrera" (click)="SeleccionCarrera(carrera)" mat-dialog-close [ngStyle]="{'background-color': carrera.id_carrera == servicio.ciclos_cycle_component[servicio.indice_lista].carrera.id_carrera ? 'rgb(230, 230, 230)' : 'transparent'}">
+
+        <mat-icon matListIcon>school</mat-icon>
+        <p><u><b>{{carrera.nombre}} &#9658; {{carrera.duracion}} semestres</b></u></p>  
+        <p>&bull; {{carrera.facultad.nombre}} &#9658; {{carrera.facultad.ubicacion}}</p>
+        <mat-divider></mat-divider>
+
+      </mat-list-option>
+
+    </mat-selection-list>
+
+  </div>
+
+</div>
+

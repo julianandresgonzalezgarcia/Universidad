@@ -1,0 +1,15 @@
+<h1 mat-dialog-title class="dialog-title"><b>Seleccione un avatar</b></h1>
+<div mat-dialog-content class="dialog-content" style="text-align: center; height: 280px; overflow: auto;">
+      
+    <div class="form-group row">
+
+        <div *ngFor="let avatar of avatars" class="col-3">
+            <button (click)="SeleccionAvatar(avatar)" mat-icon-button [style.background-image]="'url(&quot;'+ avatar.avatar_ruta +'&quot;)'" mat-dialog-close class="button-user"></button>
+        </div>
+
+    </div>
+    
+</div>
+<div mat-dialog-actions style="background-color: rgb(245, 245, 245); margin-left: -24px; margin-right: -24px;">
+  <button mat-button class="button-dialog-actions" mat-dialog-close cdkFocusInitial>Salir</button>
+</div>

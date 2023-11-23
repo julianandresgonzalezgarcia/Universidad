@@ -1,0 +1,45 @@
+<div class="modal-confirm-delete-note">
+
+    <div mat-dialog-title class="MCDN-title">
+        <h1>Desea elimiar la nota?</h1>
+    </div>
+
+
+    <div mat-dialog-content *ngIf="carga" class="MCDN-content">
+
+        <div class="row" style="height: 100%;">
+
+            <div class="col-2 MCDN-content-id-note">
+                ID: {{nota.id_nota}}
+            </div>
+
+            <div class="col-7 MCDN-content-info-note">
+                <p><b>Estudiante:</b> {{nota.alumno.nombre}} {{nota.alumno.apellido}} <b>Id:</b> {{nota.alumno.id_alumno}}</p> 
+                
+                <p><b>Asignatura:</b> {{nota.asignatura.nombre}}</p> 
+                
+                <p><b>Carrera:</b> {{nota.asignatura.ciclo.carrera.nombre}}</p>
+            </div>
+
+            <div class="col-3 MCDN-content-note">
+                <p>Nota</p>
+                <p style="font-size: 80px; margin-top: 30px;">{{nota.nota}}</p>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <div mat-dialog-actions align="end" class="MCDN-actions">
+        
+        <button mat-raised-button mat-dialog-close cdkFocusInitial class="MCDN-actions-button-no">
+            No
+        </button>
+
+        <button (click)="EliminarNota()" mat-raised-button mat-dialog-close class="MCDN-actions-button-ok">
+            Ok
+        </button>            
+
+    </div>
+
+</div>

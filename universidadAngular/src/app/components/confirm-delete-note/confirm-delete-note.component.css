@@ -1,0 +1,54 @@
+.modal-confirm-delete-note{
+   width: 500px;
+}
+
+.MCDN-title{
+    background-color: rgb(50, 50, 50); 
+    margin: -24px; 
+    padding: 24px; 
+    color: white;
+}
+
+.MCDN-content{
+    min-height: 127px; 
+    max-height: 150px;
+    background-color: rgb(225, 225, 225); 
+    border: 4px solid rgb(50, 50, 50);
+}
+
+.MCDN-content-id-note{
+    padding-top: 50px; 
+    padding-right: 10px; 
+    font-size: 20px;
+}
+
+.MCDN-content-info-note{
+    text-align: center; 
+    padding-top: 20px; 
+    background-color: rgb(245, 245, 245);
+}
+
+.MCDN-content-note{
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.MCDN-actions{
+    background-color: rgb(50, 50, 50); 
+    margin-left: -24px; 
+    margin-right: -24px; 
+    padding-right: 10px;
+}
+
+.MCDN-actions-button-no{
+    background-color: rgb(245, 245, 245); 
+    border-top-left-radius: 20px;
+    border-end-start-radius: 20px;
+}
+
+.MCDN-actions-button-ok{
+    background-color: rgb(245, 245, 245); 
+    border-top-right-radius: 20px; 
+    border-end-end-radius: 20px;
+}

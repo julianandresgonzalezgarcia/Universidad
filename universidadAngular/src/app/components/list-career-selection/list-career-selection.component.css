@@ -1,0 +1,32 @@
+.list-selection-panel{
+    width: 500px;
+}
+
+.LSP-title{
+    margin-top: -24px; 
+    margin-left: -24px; 
+    margin-right: -24px; 
+    margin-bottom: -15px; 
+    background-color: rgb(50, 50, 50); 
+    color: white;
+}
+
+.LSP-content{
+    padding: 0%; 
+    margin-bottom: -24px;
+    overflow-y: auto;
+}
+
+.LSP-content::-webkit-scrollbar {
+    width: 15.5px;
+}
+
+.LSP-content::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+}
+
+.LSP-content::-webkit-scrollbar-thumb {
+    border: 5px solid white;
+    background: rgb(50, 50, 50);
+    border-radius: 20px;
+}

@@ -1,0 +1,12 @@
+.mat-column-id_carrera{
+    width: 80px;
+}
+
+th{
+    background-color: rgb(50, 50, 50);
+    color: white;
+}
+
+td{
+    background-color: white;
+}

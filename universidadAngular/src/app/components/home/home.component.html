@@ -1,0 +1,183 @@
+<div class="form-group row">
+
+  <mat-card class="card-home-student" style="margin-left: 10px;">
+    <mat-card-content>
+
+      <section id="screen">
+
+        <div class="left">
+          <div style="margin: 30px;">
+
+            <h2>Gestionar estudiantes</h2>
+
+            <h4>&#9658; Inscribe estudiantes</h4>
+            <h4>&#9658; Actualiza estudiantes</h4>
+            <h4>&#9658; Borrar estudiantes</h4>
+
+            <button (click)="PaginaStudents()" mat-raised-button class="button-home">Estudiantes</button>  
+          
+          </div>
+        </div>
+
+        <div class="right">
+          <img src="../../../assets/Students-bro-student1.png" height="284">
+        </div>
+
+      </section>
+
+    </mat-card-content>
+  </mat-card>  
+
+
+  <mat-card class="card-home-student">
+
+    <mat-card-content>
+
+      <section id="screen">
+
+        <div class="left">
+
+          <div style="margin: 30px;">
+
+            <h2>Gestionar Notas</h2>
+
+            <h4>&#9658; Inscribe Notas</h4>
+            <h4>&#9658; Actualiza Notas</h4>
+            <h4>&#9658; Borrar Notas</h4>
+
+            <button (click)="PaginaNotes()" mat-raised-button class="button-home">Notas</button>  
+          
+          </div>
+
+        </div>
+
+        <div class="right">
+          <img src="../../../assets/Mathematics-bro1.png" height="284">
+        </div>
+
+      </section>
+
+    </mat-card-content>
+
+  </mat-card> 
+
+  <mat-card class="card-calendar">
+    <mat-calendar></mat-calendar>
+  </mat-card>        
+                          
+</div>
+
+<div class="form-group" style="margin-top: 10px;">
+
+  <section id="screen">
+
+    <div class="left1">
+ 
+      <table class="left1-table">
+
+        <tr>
+          <th>Nombre del estudiante</th>
+          <th>Asignatura</th>
+          <th>Creditos</th>
+          <th>Fecha de la nota</th>
+          <th>Nota</th>
+        </tr>
+
+        <tr *ngFor="let nota of notas">
+            <td>{{nota.alumno.nombre}} {{nota.alumno.apellido}}</td>
+            <td>{{nota.asignatura.nombre}}</td>
+            <td>{{nota.asignatura.creditos}}</td>
+            <td>{{nota.fecha}}</td>
+            <td>{{nota.nota}}</td>
+        </tr>        
+       
+      </table>
+
+    </div>
+
+    <div class="right1">
+
+      <mat-card class="card-home-activity">
+
+        <mat-card-content>
+
+          <section id="screen" style="height: 250px;">
+
+            <div class="left2">
+              <img src="../../../assets/Studying-bro1.png" height="210px" style="margin-top: 30px;">
+            </div>
+
+            <div class="right2" style="overflow-y: auto;">
+
+              <mat-list>
+
+                <h2 style="margin-top: 5px;"><b>Materias</b></h2>
+                <mat-list-item *ngFor="let asignatura of asignaturas" class="list-item">
+
+                  <mat-card class="card-list-item">
+                    <mat-card-header class="card-list-item-header">
+                      {{asignatura.ciclo.carrera.nombre}}
+                    </mat-card-header>
+                    <mat-card-content style="padding: 10px;">[ {{asignatura.nombre}} - {{asignatura.ciclo.nombre}} ]</mat-card-content>
+                  </mat-card>
+        
+                </mat-list-item>
+
+              </mat-list>
+<!--  
+              <button mat-raised-button style="border-radius: 20px; width: 150px;">Accion</button>
+-->              
+            </div>
+
+          </section>
+
+        </mat-card-content>
+
+      </mat-card>  
+
+      <mat-card class="card-home-activity" style="margin-top: 15px;">
+
+        <mat-card-content>
+
+          <section id="screen">
+
+            <div class="right2">
+
+              <div style="margin-left: 10px;">
+
+                <mat-card *ngIf="confirmacion" class="card-user-info">
+                  <mat-card-content> 
+                    <img style="margin-top: 10px; margin-bottom: 10px;" src={{usuario.avatar.avatar_ruta}} width="70">
+
+                    <p>
+                    Bienvenido <b>{{usuario.nombre}}</b> perteneces a la facultad de <b>{{usuario.facultad.nombre}}</b> 
+                    y tu correo es <b>{{usuario.correo}}</b> puedes editar esta informacion y/o selecionar un avatar
+                    </p> 
+
+                  </mat-card-content>
+                  <mat-divider></mat-divider>
+                  <mat-card-actions style="margin: 10px;">
+                    <button (click)="PanelUserData()" mat-raised-button class="button-edit-user-data">Editar</button>
+                  </mat-card-actions>
+                </mat-card>
+                     
+              </div>
+
+            </div>
+
+            <div class="left2">
+              <img src="../../../assets/Learning-bro1.png" height="240px">
+            </div>
+
+          </section>
+
+        </mat-card-content>
+
+      </mat-card>  
+
+    </div>
+
+  </section>
+   
+</div>
+       

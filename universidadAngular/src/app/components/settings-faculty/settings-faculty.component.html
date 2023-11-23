@@ -1,0 +1,72 @@
+<table *ngIf="carga_lista" mat-table [dataSource]="facultades" style="width: 100%; text-align: center;">
+
+    <ng-container matColumnDef="id_facultad">
+      <th style="text-align: center;" mat-header-cell *matHeaderCellDef> ID Ciclo </th>
+      <td mat-cell *matCellDef="let element"> {{element.id_facultad}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nombre">
+      <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+  
+        {{element.nombre}}
+        <!--  
+        <mat-form-field style="margin-top: 15px; width: 80%;">
+          <mat-label>Nombre</mat-label>
+          <input [formControl]="formCicloNombre[i]" [(ngModel)]="servicio.ciclos_cycle_component[i].nombre" name="nombre" matInput placeholder="Nombre" autocomplete="off">
+          <mat-error *ngIf="formCicloNombre[i].hasError('required')">Digite el nombre del ciclo</mat-error>
+        </mat-form-field>
+        -->
+
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ubicacion">
+      <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Ubicacion </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+  
+        {{element.ubicacion}}
+        <!--  
+        <button (click)="PanelListaCicloSeleccion(i)" mat-flat-button [disabled]="habilitar_edicion[i]" class="button-data-content" style="color: rgb(50, 50, 50);">
+          {{servicio.ciclos_cycle_component[i].carrera.nombre}}
+        </button>
+        -->
+  
+      </td>
+    </ng-container>
+  
+    <!--  
+    <ng-container matColumnDef="acciones">
+      <th style="text-align: center; border-bottom-right-radius: 100px;" mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell style="padding: 0%;" *matCellDef="let element; let i = index">
+  
+        <div>
+  
+          <button (click)="PanelListaCicloEleccion(i)" mat-icon-button>
+            <mat-icon>priority_high</mat-icon>
+          </button>
+  
+          <button (click)="ActualizarCiclo(i, element.id_ciclo, element)" mat-icon-button>
+            <mat-icon>update</mat-icon>
+          </button>
+  
+          <button mat-icon-button [matMenuTriggerFor]="confirmar">
+            <mat-icon>delete</mat-icon>
+          </button>
+  
+          <mat-menu #confirmar="matMenu">
+            <button (click)="BorrarCiclo(element.id_ciclo)" mat-menu-item>
+              <mat-icon>delete_outline</mat-icon>        
+              Borrar la ciclo
+            </button>
+          </mat-menu>
+  
+        </div>
+  
+      </td>
+    </ng-container>
+    -->
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

@@ -1,0 +1,152 @@
+.notes-content-left{
+    width: 868px; 
+    height: 100%; 
+    margin-top: 5px;
+}
+
+.button-create-note{
+    background-color: white; 
+    width: 170px; 
+    border-radius: 20px;
+}
+
+.card-create-note{
+    margin-bottom: 10px; 
+    background-color: rgb(21, 57, 88); 
+    width: 860px; 
+    height: 155px; 
+    border-top-left-radius: 20px;
+    border-end-start-radius: 20px;
+    padding: 0%;
+}
+
+
+.notes-content-right{
+    width: 340px; 
+    height: 100%; 
+    margin-top: 5px;
+}
+
+.card-list-subjects{
+    padding: 0%; 
+    height: 155px; 
+    margin-bottom: 10px; 
+    background-color: rgb(21, 57, 88); 
+    color: white; 
+    border-end-end-radius: 20px; 
+    border-top-right-radius: 20px; 
+    overflow-y: auto;
+    border: 3px solid rgb(50, 50, 50);
+}
+
+.card-list-subjects::-webkit-scrollbar{
+    width: 15.5px;
+}
+  
+.card-list-subjects::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+  
+.card-list-subjects::-webkit-scrollbar-thumb{
+    border: 5px solid rgb(21, 57, 88);
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.list-option-action{
+    background-color: white; 
+    border-right: 3px solid rgb(50, 50, 50); 
+    text-align: center;
+}
+
+.card-students-user{
+    overflow-y: auto;
+    padding: 0%; 
+    border-top-left-radius: 20px;
+    border-end-start-radius: 20px;
+    border: 3px solid rgb(21, 57, 88);
+    width: 860px;
+    max-height: 614px;
+}
+
+.button-list-students{
+    background-color: rgb(21, 57, 88); 
+    color: white; 
+    border-start-start-radius: 20px; 
+    border-end-start-radius: 20px; 
+    border-end-end-radius: 0px; 
+    border-start-end-radius: 0px;
+}
+
+.student-id{
+    padding-bottom: 30px; 
+    font-size: 25px; 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    color:rgb(200, 200, 200); 
+    width: 90px;
+}
+
+.card-students-user::-webkit-scrollbar{
+    width: 15.5px;
+}
+  
+.card-students-user::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+}
+  
+.card-students-user::-webkit-scrollbar-thumb{
+    border: 5px solid rgb(255, 255, 255);
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}
+
+.card-notes-student{
+    height: 408px; 
+    padding: 0%;
+    border-top-right-radius: 25px;
+    border: 3px solid rgb(50, 50, 50);
+}
+
+.card-notes-content{
+    margin: 10px;
+    height: 80%;
+    overflow-y:auto;
+}
+
+.card-notes-student-header{
+    padding: 5px; 
+
+    border-top-right-radius: 20px; 
+    background-color: rgb(50, 50, 50); 
+    color: white;
+}
+
+
+.card-notes-content::-webkit-scrollbar{
+    width: 15.5px;
+}
+  
+.card-notes-content::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+}
+  
+.card-notes-content::-webkit-scrollbar-thumb{
+    border: 5px solid rgb(255, 255, 255);
+    background: rgb(21, 57, 88);
+    border-radius: 20px;
+}
+
+.card-info-student{
+    margin-top: 5px; 
+    height: 201px; 
+    border: 3px solid rgb(50, 50, 50); 
+    border-end-end-radius: 20px;
+}
+
+.card-info-student-avatar{
+    background-image: url('../../../assets/gorra.png'); 
+    background-size: cover; transform: scale(1.5); 
+    margin-top: 5px;
+}

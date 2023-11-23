@@ -1,0 +1,24 @@
+.modal-direct-delete{
+    min-width: 570px;
+    max-width: 670px;
+}
+
+.modal-direct-title{
+    margin-top: -24px; 
+    margin-left: -24px; 
+    margin-right: -24px; 
+    color: white; 
+    background-color: rgb(50, 50, 50);
+}
+
+.modal-card-selection{
+    border: 2px solid rgb(21, 57, 88); 
+    border-radius: 20px; 
+    height: 100px;
+}
+
+.button-student-data{  
+    background-color: rgb(21, 57, 88); 
+    transform: scale(0.8); 
+    border-radius: 20px;
+}
